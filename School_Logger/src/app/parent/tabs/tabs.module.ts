@@ -4,23 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { TabsPageRoutingModule } from './tabs.router.module';
 
-import { ParentPage } from './parent.page';
+import { TabsPage } from './tabs.page';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: ParentPage
-//   }
-// ];
+const routes: Routes = [
+  {
+    path: '',
+    component: TabsPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: ParentPage }])
+    TabsPageRoutingModule,
+    RouterModule.forChild(routes)
   ],
-  declarations: [ParentPage]
+  declarations: [TabsPage]
 })
-export class ParentPageModule {}
+export class TabsPageModule {}
