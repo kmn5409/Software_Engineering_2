@@ -7,19 +7,19 @@ import { IonicModule } from '@ionic/angular';
 
 import { ParentAlertsPage } from './parent-alerts.page';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: ParentAlertsPage
-//   }
-// ];
+const routes: Routes = [
+  {
+    path: '',
+    component: ParentAlertsPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: ParentAlertsPage }])
+    RouterModule.forChild(routes)
   ],
   declarations: [ParentAlertsPage]
 })

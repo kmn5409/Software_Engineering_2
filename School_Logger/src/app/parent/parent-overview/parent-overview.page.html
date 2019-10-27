@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>parent_overview</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button text="back" icon="add"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Overview</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+          <ion-tab-button tab="overview">
+            <ion-icon name="overview"></ion-icon>
+            <ion-label>Overview</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button tab="alerts">
+            <ion-icon name="alerts"></ion-icon>
+            <ion-label>Alerts</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="logs">
+              <ion-icon name="logs"></ion-icon>
+              <ion-label>Logs</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
 
 </ion-content>
+
