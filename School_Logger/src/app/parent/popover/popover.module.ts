@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ParentOverviewPage } from './parent-overview.page';
-
+import { PopoverPage } from './popover.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ParentOverviewPage
+    component: PopoverPage
   }
 ];
 
@@ -22,9 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ParentOverviewPage]
+  declarations: [PopoverPage]
 })
-export class ParentOverviewPageModule {
-
-  
-}
+export class PopoverPageModule {}
