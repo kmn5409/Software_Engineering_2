@@ -1,10 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>Alerts</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+<div id="tabs">
     <ion-tabs>
         <ion-tab-bar slot="top">
           <ion-tab-button href="/parent/overview/timmy">
@@ -23,5 +24,39 @@
             </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
+    </div>
+
+<div id="body">
+  <ion-list>
+    <ion-list-header>
+      Today
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://app.pelorous.com/public/cms/209/432/168/1625/GghRfu_web.jpg?v=2">
+      </ion-avatar>
+      <ion-label>
+        <h2><b>Restless</b></h2>
+        <h3>11:28 AM</h3>
+        <p>Cimone has been having trouble paying attention in class. She is continously fidgeting.</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://app.pelorous.com/public/cms/209/432/168/1625/GghRfu_web.jpg?v=2">
+      </ion-avatar>
+      <ion-label>
+        <h2><b>Sleepy</b></h2>
+        <h3>9:17 AM</h3>
+        <p>Cimone is having a hard time staying away today. Has she been getting enough sleep?</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</div>
+
 
 </ion-content>
