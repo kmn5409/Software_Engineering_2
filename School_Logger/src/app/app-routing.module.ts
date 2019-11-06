@@ -2,22 +2,17 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tempbuttonpageforkeanu', pathMatch: 'full' },
-  { path: 'tempbuttonpageforkeanu', loadChildren: './tempbuttonpageforkeanu/tempbuttonpageforkeanu.module#TempbuttonpageforkeanuPageModule' },
-
-
-  
+  {path: '', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), pathMatch: 'full'},
+  {path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {path : '', loadChildren: () => import('./parent/tabs/tabs.module').then(m => m.TabsPageModule)},
-
-  { path: '', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule) },
+  {path : '', loadChildren: () => import('./teacher/tabs/tabs.module').then(m => m.TabsPageModule)},
   { path: 'popover', loadChildren: './parent/popover/popover.module#PopoverPageModule' }
-
-  //{ path: 'parent/overview/:id', loadChildren: () => import('./parent/parent-overview/parent-overview.module').then(m => m.ParentOverviewPageModule) }
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
