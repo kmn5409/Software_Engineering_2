@@ -20,8 +20,8 @@
         </h4> 
         </ion-note>
     </ion-item>
-    <ion-item *ngFor="let task of tasks | async">
-        <ion-label >{{task.name}}</ion-label>
+    <ion-item *ngFor="let child of children | async">
+        <ion-label >{{child.firstName}} {{child.lastName}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-card>

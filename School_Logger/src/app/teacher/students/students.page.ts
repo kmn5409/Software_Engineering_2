@@ -9,13 +9,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./students.page.scss'],
 })
 export class StudentsPage implements OnInit {
-  tasksRef: AngularFireList<any>;
-  tasks: Observable<any[]>;
+  childrenRef: AngularFireList<any>;
+  children: Observable<any[]>;
 
   constructor(public db: AngularFireDatabase){
-  this.tasksRef = db.list('/tasks/users');
+  this.childrenRef = db.list('/children');
 
-    this.tasks = this.tasksRef.snapshotChanges().pipe(
+    this.children = this.childrenRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
