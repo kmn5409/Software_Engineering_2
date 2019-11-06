@@ -7,21 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content fullscreen>
 <ion-card>
   <ion-list>
     
-     <ion-item>  
+     <ion-item *ngFor="let task of tasks | async">>  
       <ion-avatar slot="start">
         <img src="https://www.healthyfood.com/wp-content/uploads/2017/01/Should-your-child-be-dairy-free-iStock_64414757.jpg">
       </ion-avatar>
         <ion-note>
         <h4>
-         Name Class Age
+         {{task.name}}
         </h4> 
         </ion-note>
     </ion-item>
-    <ion-item *ngFor="let task of tasks | async">
-        <ion-label >{{task.name}}</ion-label>
-    </ion-item>
+
   </ion-list>
 </ion-card>
+</ion-content>

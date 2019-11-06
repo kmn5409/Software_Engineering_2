@@ -12,16 +12,16 @@ export class StudentsPage implements OnInit {
   tasksRef: AngularFireList<any>;
   tasks: Observable<any[]>;
 
-  constructor(public db: AngularFireDatabase){
+  constructor(public db: AngularFireDatabase) {
   this.tasksRef = db.list('/tasks/users');
 
-    this.tasks = this.tasksRef.snapshotChanges().pipe(
+  this.tasks = this.tasksRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
 
-  }  
+  }
 
   ngOnInit() {
   }
