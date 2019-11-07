@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button text="back" icon="add"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Student</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="inter_tabs" style="border: 1px solid black">
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+          <ion-tab-button href="/parent/overview/timmy">
+            <ion-icon name="overview"></ion-icon>
+            <ion-label>Overview</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button href="/parent/alerts/timmy" >
+            <ion-icon name="alerts"></ion-icon>
+            <ion-label>Alerts</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button href="/parent/logs/timmy">
+              <ion-icon name="logs"></ion-icon>
+              <ion-label>Logs</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+      </div>
+
+
+<ion-card id="profileCard">
+      <ion-card-header id="profile_header">
+          <div id="profile_img"><img src="https://app.pelorous.com/public/cms/209/432/168/1625/GghRfu_web.jpg?v=2" alt=""></div>
+          <ion-card-title>Cimone Yung</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content id="profile_content"> 
+          <ion-label>Age: 7 <span class="dot"></span> Grade: 3 <span class="dot"></span> Class: A5 </ion-label>
+          <p>Class Teacher: Mrs. Jackson</p>
+          
+        </ion-card-content>
+      </ion-card>
+        
+      <!-- BASIC INFORMATION CARD -->
+      <ion-card>
+        <ion-card-header color="secondary">
+            <ion-card-title >Basic Information</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+
+          <!-- PERSONAL INFORMATION SECTION -->
+          <div class="section">
+            <ion-card-title >Personal Information</ion-card-title>
+            <ion-item>
+              <ion-icon name="person"></ion-icon>
+
+              <ion-label>
+                Birthday: 7th July
+              </ion-label>
+            </ion-item>
+        
+            <ion-item>
+              <ion-icon name="person"></ion-icon>
+              <ion-label>
+                Blood Type: A+
+              </ion-label>
+            </ion-item>
+          </div>
+
+          <!-- FAMILY INFORMATION SECTION -->
+          <div class="section">
+            <ion-card-title >Family Information</ion-card-title>
+            <ion-item>
+              <ion-icon name="person"></ion-icon>
+              <ion-label>
+                Mother: Sheryl Yung
+              </ion-label>
+            </ion-item>
+          
+            <ion-item>
+              <ion-icon name="person"></ion-icon>
+              <ion-label>
+                Father: Bruce Yung
+              </ion-label>
+            </ion-item>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+
+    <!-- MEDICAL CONDITIONS CARD -->
+    <ion-card>
+      <ion-card-header color="secondary">
+        <ion-card-title >Health Conditions</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="section">
+          <ion-item>
+              <ion-icon name="medkit"></ion-icon>
+            <ion-label>
+              Condition1
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+      
+</ion-content>
+

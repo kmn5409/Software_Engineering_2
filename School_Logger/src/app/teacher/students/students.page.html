@@ -11,7 +11,7 @@
 <ion-card>
   <ion-list>
     
-     <ion-item *ngFor="let child of children | async">  
+     <ion-item *ngFor="let child of children | async" [routerLink]="['/teacher/student-overview']">  
       <ion-avatar slot="start">
         <img src="https://www.healthyfood.com/wp-content/uploads/2017/01/Should-your-child-be-dairy-free-iStock_64414757.jpg">
       </ion-avatar>

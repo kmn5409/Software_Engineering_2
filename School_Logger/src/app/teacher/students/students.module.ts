@@ -10,7 +10,14 @@ import { StudentsPage } from './students.page';
 const routes: Routes = [
   {
     path: '',
-    component: StudentsPage
+    component: StudentsPage,
+    children: [
+      {
+        path: 'teacher/student-overview',
+        // loadChildren: () => import('../student-overview/student-overview.module').then(m => m.StudentOverviewPageModule),
+        loadChildren: () => import('../tabs/tabs.router.module').then(m => m.TabsPageRoutingModule),
+      }
+    ]
   }
 ];
 
