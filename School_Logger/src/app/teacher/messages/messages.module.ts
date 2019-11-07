@@ -10,7 +10,11 @@ import { MessagesPage } from './messages.page';
 const routes: Routes = [
   {
     path: '',
-    component: MessagesPage
+    component: MessagesPage,
+        children: [{
+      path: 'message/:id',
+      loadChildren: () => import('../message/message.module').then(m => m.MessagePageModule),
+    }],
   }
 ];
 

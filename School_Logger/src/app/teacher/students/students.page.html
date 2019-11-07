@@ -11,13 +11,13 @@
 <ion-card>
   <ion-list>
     
-     <ion-item *ngFor="let task of tasks | async">>  
+     <ion-item *ngFor="let child of children | async">  
       <ion-avatar slot="start">
         <img src="https://www.healthyfood.com/wp-content/uploads/2017/01/Should-your-child-be-dairy-free-iStock_64414757.jpg">
       </ion-avatar>
         <ion-note>
         <h4>
-        >{{child.firstName}} {{child.lastName}}
+        {{child.firstName}} {{child.lastName}}
         </h4> 
         </ion-note>
     </ion-item>

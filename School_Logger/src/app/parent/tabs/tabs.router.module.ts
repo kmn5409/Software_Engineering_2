@@ -26,13 +26,13 @@ const routes: Routes = [
         path: 'notifications',
         loadChildren: () => import('../notifications/notifications.module').then(m => m.NotificationsPageModule ),
       },
-      { path: 'overview/:id', 
+      { path: 'overview/:id',
       loadChildren: () => import('../parent-overview/parent-overview.module').then(m => m.ParentOverviewPageModule) 
       },
-      { path: 'alerts/:id', 
+      { path: 'alerts/:id',
       loadChildren: () => import('../parent-alerts/parent-alerts.module').then(m => m.ParentAlertsPageModule) 
       },
-      { path: 'logs/:id', 
+      { path: 'logs/:id',
       loadChildren: () => import('../parent-logs/parent-logs.module').then(m => m.ParentLogsPageModule) 
       }
 

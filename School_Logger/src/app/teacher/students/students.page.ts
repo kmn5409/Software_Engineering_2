@@ -12,10 +12,10 @@ export class StudentsPage implements OnInit {
   childrenRef: AngularFireList<any>;
   children: Observable<any[]>;
 
-  constructor(public db: AngularFireDatabase){
+  constructor(public db: AngularFireDatabase) {
   this.childrenRef = db.list('/children');
 
-    this.children = this.childrenRef.snapshotChanges().pipe(
+  this.children = this.childrenRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
