@@ -8,7 +8,10 @@ const routes: Routes = [
   {path : '', loadChildren: () => import('./teacher/tabs/tabs.module').then(m => m.TabsPageModule)},
   { path: 'popover', loadChildren: './parent/popover/popover.module#PopoverPageModule' },
   { path: 'message', loadChildren: './teacher/message/message.module#MessagePageModule' },
-  { path: 'student-overview', loadChildren: './teacher/student-overview/student-overview.module#StudentOverviewPageModule' }
+  { path: 'student-overview', loadChildren: './teacher/student-overview/student-overview.module#StudentOverviewPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'createaccount', loadChildren: './createaccount/createaccount.module#CreateaccountPageModule' },
+  { path: "**", redirectTo: "home" }
 ];
 
 @NgModule({

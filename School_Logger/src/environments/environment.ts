@@ -10,6 +10,7 @@ export const environment = {
     databaseURL: 'https://se-project-4c4c4.firebaseio.com/'
   }
 
+
 };
 
 /*
