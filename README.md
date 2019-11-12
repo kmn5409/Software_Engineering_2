@@ -6,4 +6,6 @@ Need to run the following commands:
 ```
 npm install
 npm install firebase angularfire2 --save
+cd School_Logger
+ionic serve
 ```
