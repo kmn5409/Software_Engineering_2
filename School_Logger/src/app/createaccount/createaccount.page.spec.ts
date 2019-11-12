@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopoverPage } from './popover.page';
+import { CreateaccountPage } from './createaccount.page';
 
-describe('PopoverPage', () => {
-  let component: PopoverPage;
-  let fixture: ComponentFixture<PopoverPage>;
+describe('CreateaccountPage', () => {
+  let component: CreateaccountPage;
+  let fixture: ComponentFixture<CreateaccountPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PopoverPage ],
+      declarations: [ CreateaccountPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopoverPage);
+    fixture = TestBed.createComponent(CreateaccountPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

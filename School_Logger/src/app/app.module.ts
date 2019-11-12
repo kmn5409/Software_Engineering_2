@@ -10,17 +10,22 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import {
-   AngularFireDatabase,
-   AngularFireDatabaseModule } from 'angularfire2/database';
+  AngularFireDatabase,
+  AngularFireDatabaseModule
+} from 'angularfire2/database';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
+
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  AngularFireModule.initializeApp(environment.firebase),
+  imports: [BrowserModule, AngularFireAuthModule, AngularFirestoreModule, IonicModule.forRoot(), AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
   providers: [
@@ -31,4 +36,4 @@ import { environment } from '../environments/environment';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
