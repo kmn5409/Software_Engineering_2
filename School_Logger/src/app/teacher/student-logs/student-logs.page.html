@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+    <ion-title>Logs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div id="inter_tabs" style="border: 1px solid black">
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+          <ion-tab-button [routerLink]="['/teacher/student-overview']">
+            <ion-icon name="overview"></ion-icon>
+            <ion-label>Overview</ion-label>
+          </ion-tab-button>
+      
+          <ion-tab-button [routerLink]="['/teacher/student-alerts']">
+            <ion-icon name="alerts"></ion-icon>
+            <ion-label>Alerts</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button [routerLink]="['/teacher/student-logs']">
+              <ion-icon name="logs"></ion-icon>
+              <ion-label>Logs</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+</div>
+
+
+</ion-content>
