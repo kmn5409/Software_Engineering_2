@@ -9,3 +9,5 @@ npm install
 cd School_Logger
 ionic serve
 ```
+
+[![Build Status](https://travis-ci.com/kmn5409/Software_Engineering_2.svg?token=qDzTyWwCoZniHN29zysY&branch=master)](https://travis-ci.com/kmn5409/Software_Engineering_2)
