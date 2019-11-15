@@ -12,9 +12,9 @@
   </ion-card-header>
 <ion-card-content>   
 <form>
-<ion-textarea  placeholder="Please describe incident." required="true"></ion-textarea>
+<ion-textarea  [(ngModel)]="data" name="first" placeholder="Please describe incident." required="true"></ion-textarea>
 
-<ion-button type="submit" color="secondary" expand="full">Submit</ion-button>  
+<ion-button (click)="capture_Data()" type="submit" color="secondary" expand="full">Submit</ion-button>  
 </form>
 </ion-card-content>
 </ion-card>
