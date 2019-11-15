@@ -10,7 +10,7 @@ def check_teacher_has_student_access(teacher, student):
     return False
 
 def add(x, y):
-  cred = credentials.Certificate('se-project-4c4c4-7051f39dca6d.json')
+    cred = credentials.Certificate('se-project-4c4c4-7051f39dca6d.json')
     firebase_admin.initialize_app(cred)
 
     db = firestore.client()
