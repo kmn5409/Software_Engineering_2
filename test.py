@@ -3,7 +3,7 @@ import calculator
 
 class Test(unittest.TestCase):
   def test_add(self):
-    self.assertEqual(calculator.add(2, 3), 5)
+    self.assertEqual(calculator.add(2, 3), True)
     
 if __name__ == '__main__':
   unittest.main()
