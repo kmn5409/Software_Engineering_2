@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'student-overview', loadChildren: './teacher/student-overview/student-overview.module#StudentOverviewPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'createaccount', loadChildren: './createaccount/createaccount.module#CreateaccountPageModule'},
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'home' },  { path: 'form', loadChildren: './teacher/student-logs/form/form.module#FormPageModule' },
+
+
 ];
 
 @NgModule({
