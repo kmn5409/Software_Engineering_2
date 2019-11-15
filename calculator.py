@@ -2,12 +2,13 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-def check_teacher_has_student_access(teacher, student):
-    print('Students')
-    for child in teacher['students']:
-        if(student['id'] == child):
-            return True
-    return False
+def check_all_children_have_teachers(children):
+    for child in children:
+        child = child.to_dict()
+        child_has_teacher = ('teacher' in child.keys() and child['teacher'] != '')
+        if (not child_has_teacher):
+            return False
+    return True 
 
 def add(x, y):
     cred = credentials.Certificate('se-project-4c4c4-7051f39dca6d.json')
@@ -20,19 +21,6 @@ def add(x, y):
     students = db.collection(u'children')
     students = students.stream()
 
-    for user in users:
-        user = user.to_dict()
-        #if(user['role'] == 'teacher'):
-        #    print('Teacher: ' + str(user['id']))
-        #    teacher_student_access(user)
-        if(user['id'] == 'vsiGyzuZF2RzGYdc93FTuhLVkH53'):
-            for student in students:
-                student = student.to_dict()
-                if(student['id'] == 'jsjNOm7SikNnsCG1UHHB'):
-                    ans = check_teacher_has_student_access(user, student)
-                    print(ans)
-                    return ans                    
-        #for student in user['students']:
-        #    print(student)
-        print('\n\n')
+    return check_all_children_have_teachers(students)
+
 
