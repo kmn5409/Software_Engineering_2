@@ -6,6 +6,12 @@ def check_all_children_have_teachers(children):
             return False
     return True 
 
-
+def check_all_users_have_role(users):
+    for user in users:
+        user = user.to_dict()
+        user_has_role = ('role' in user.keys() and user['role'] != '')
+        if(not user_has_role):
+            return False
+    return True
 
 
