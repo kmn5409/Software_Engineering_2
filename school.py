@@ -1,4 +1,4 @@
-def check_all_children_have_teachers(children):
+def check_all_children_have_teachers(users, children):
     for child in children:
         child = child.to_dict()
         child_has_teacher = ('userID' in child.keys() and child['userID'] != '')
@@ -6,7 +6,7 @@ def check_all_children_have_teachers(children):
             return False
     return True 
 
-def check_all_users_have_role(users):
+def check_all_users_have_role(users, children):
     for user in users:
         user = user.to_dict()
         user_has_role = ('role' in user.keys() and user['role'] != '')
