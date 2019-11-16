@@ -10,13 +10,10 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('../parent.module').then(m => m.ParentPageModule),
-        // children: [
-        //   {
-        //     path: '',
-        //     loadChildren: () =>
-        //       import('../parent.module').then(m => m.ParentPageModule)
-        //   }
-        // ]
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('../parent.module').then(m => m.ParentPageModule),
       },
       {
         path: 'messages',

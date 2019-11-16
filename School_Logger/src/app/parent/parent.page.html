@@ -15,16 +15,17 @@
         </ion-card-content>-->
     </ion-card>
     <div><h1>My Children</h1></div>
-    <a  [href] ="['/parent/overview/timmy']" routerDirection="forward">
+
+
+    <a  *ngFor="let child of children | async" [routerLink]="['overview/:id']">
 <ion-card  style="height: 200px; background-color: rgb(143, 219, 255)">
   <div class="left-content">
     <div class="img_container"><img class="circle-pic" src="https://www.healthyfood.com/wp-content/uploads/2017/01/Should-your-child-be-dairy-free-iStock_64414757.jpg" alt=""></div>
   </div>
   
   <div class="right-content">
-    <div class="card-title">Timmy Smith</div>
-    </div>
-    
+    <div class="card-title">{{child.firstName}} {{child.lastName}}</div>
+    </div>   
 
 </ion-card>
 </a>

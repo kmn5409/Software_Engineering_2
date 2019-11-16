@@ -87,10 +87,10 @@ export class AuthService {
 }
 
 signout(){
-
+  return this.afAuth.auth.signOut().then(() => {
+    this.router.navigate(["/home"]);
+  }).catch(function(e) {
+    console.error(e); 
+  })
 }
-
-
-
-
 }
