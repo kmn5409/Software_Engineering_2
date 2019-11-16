@@ -11,7 +11,7 @@ db = firestore.client()
 class Test(unittest.TestCase):
 
 
-  def test_add(self):
+  def test_all_children_have_teacher(self):
 
     global db
     users_ref = db.collection(u'users')
