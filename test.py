@@ -9,8 +9,8 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection(u'users')
 users = users_ref.stream()
-students = db.collection(u'children')
-students = students.stream()
+children = db.collection(u'children')
+children = children.stream()
 
 class Test(unittest.TestCase):
 
@@ -18,12 +18,12 @@ class Test(unittest.TestCase):
   def test_all_children_have_teacher(self):
 
     global users
-    global students
-    self.assertEqual(school.check_all_children_have_teachers(students), True)
+    global children
+    self.assertEqual(school.check_all_children_have_teachers(users, children), True)
 
   def test_all_users_have_role(self):
 
-    self.assertEqual(school.check_all_users_have_role(users), True)
+    self.assertEqual(school.check_all_users_have_role(users, children), True)
     
 if __name__ == '__main__':
   unittest.main()
