@@ -21,8 +21,13 @@ class Test(unittest.TestCase):
     global children
     self.assertEqual(school.check_all_children_have_teachers(users, children), True)
 
-  def test_all_users_have_role(self):
+  def test_all_children_have_parent(self):
 
+    global users
+    global children
+    self.assertEqual(school.check_all_children_have_parents(users, children), True)
+
+  def test_all_users_have_role(self):
     self.assertEqual(school.check_all_users_have_role(users, children), True)
     
 if __name__ == '__main__':
