@@ -11,24 +11,34 @@ users_ref = db.collection(u'users')
 users = users_ref.stream()
 children = db.collection(u'children')
 children = children.stream()
+children_container = []
+user_container = []
+for child in children:
+    children_container.append(child.to_dict())
 
+for user in users:
+    user_container.append(user.to_dict())
+ 
 class Test(unittest.TestCase):
-
 
   def test_all_children_have_teacher(self):
 
-    global users
-    global children
-    self.assertEqual(school.check_all_children_have_teachers(users, children), True)
+    self.assertEqual(school.check_all_children_have_teachers(user_container, children_container), True)
 
   def test_all_children_have_parent(self):
 
-    global users
-    global children
-    self.assertEqual(school.check_all_children_have_parents(users, children), True)
+
+    self.assertEqual(school.check_all_children_have_parents(user_container, children_container), True)
 
   def test_all_users_have_role(self):
-    self.assertEqual(school.check_all_users_have_role(users, children), True)
-    
+
+
+    self.assertEqual(school.check_all_users_have_role(user_container, children_container), True)
+
+  def test_check_all_parents_have_children(self):
+
+
+    self.assertEqual(school.check_all_parents_have_children(user_container, children_container), True)
+
 if __name__ == '__main__':
   unittest.main()
