@@ -2,6 +2,17 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+
+def check_all_users_have_unique_ids(users):
+    user_ids = [users[x]['userID'] for x in range(len(users))]
+    items = set()
+    for item in user_ids:
+        if item in items:
+            return False
+        else:
+            items.add(item)
+    return True
+
 def check_all_parents_have_children(users, children):
     child_ids = [children[x]['childID'] for x in range(len(children))]
     for user in users:
