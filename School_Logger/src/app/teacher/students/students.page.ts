@@ -21,7 +21,6 @@ export class StudentsPage {
     this.children = this.childrenCollection.valueChanges();
     //this.af.auth.subscribe(auth => console.log(auth));
     console.log(this.af.auth);
-    console.log(this.af.auth.userID);
     console.log('User');
     console.log(this.af.auth.currentUser);
     console.log(this.af.auth.currentUser.email);

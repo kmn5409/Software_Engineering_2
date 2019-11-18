@@ -13,7 +13,7 @@
     
      <ion-item *ngFor="let child of children | async" [routerLink]="['/teacher/student-overview']">  
      <ion-item *ngFor="let id of child.userID" >  
-     <ion-item *ngIf="uid == id " >  
+     <ion-item *ngIf="uid == id" >  
       <ion-avatar slot="start">
       <img src={{child.imageLink}}>
       </ion-avatar>
