@@ -41,14 +41,14 @@
         </ion-card-header>
         
         <ion-card-content id="profile_content"> 
-          <ion-label>Age: 7 <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> Class: A5 </ion-label>
+          <ion-label  >Age: {{child.age}} <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> Class: A5 </ion-label>
           <p>Class Teacher: Mrs. Jackson</p>
           
         </ion-card-content>
       </ion-card>
         
       <!-- BASIC INFORMATION CARD -->
-      <ion-card>
+      <ion-card *ngFor="let child of childData | async">
         <ion-card-header color="secondary">
             <ion-card-title >Basic Information</ion-card-title>
         </ion-card-header>
@@ -62,7 +62,7 @@
               <ion-icon name="person"></ion-icon>
 
               <ion-label>
-                Birthday: 7th July
+                Birthday: {{child.dateOfBirth}}
               </ion-label>
             </ion-item>
         

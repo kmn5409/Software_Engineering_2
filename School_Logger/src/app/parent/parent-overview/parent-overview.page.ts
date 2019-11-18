@@ -28,8 +28,10 @@ export class ParentOverviewPage implements OnInit {
             if (!doc.exists) {
               console.log('No such document!');
             } else {
-              console.log(doc.data());
-              observer.next([doc.data()]);
+              let x = doc.data();
+              x.age = this.calculateDob(x.dateOfBirth);
+              console.log(x);
+              observer.next([x]);
             }
           })
           .catch(err => {
@@ -39,6 +41,11 @@ export class ParentOverviewPage implements OnInit {
     })
   })
 
-  
+  calculateDob(dob){
+    const timeDiff = Math.abs(Date.now() - new Date(dob).getTime());
+    const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+    console.log(age);
+    return age;
+  }
 
 }
