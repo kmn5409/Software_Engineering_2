@@ -10,6 +10,7 @@
   
 </ion-header>
 
+
 <ion-content>
   <div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
@@ -31,19 +32,16 @@
         </ion-tab-bar>
       </ion-tabs>
       </div>
+     
 
-     <!-- <ion-button expand="block" routerLink="/parent" >
-        Back
-      </ion-button>-->
-
-<ion-card id="profileCard">
+<ion-card id="profileCard" *ngFor="let child of childData | async">
       <ion-card-header id="profile_header">
-          <div id="profile_img"><img src="https://app.pelorous.com/public/cms/209/432/168/1625/GghRfu_web.jpg?v=2" alt=""></div>
-          <ion-card-title>Cimone Yung</ion-card-title>
+          <div id="profile_img"><img src="{{child.imageLink}}" alt=""></div>
+          <ion-card-title>{{child.firstName}}  {{child.lastName}}</ion-card-title>
         </ion-card-header>
         
         <ion-card-content id="profile_content"> 
-          <ion-label>Age: 7 <span class="dot"></span> Grade: 3 <span class="dot"></span> Class: A5 </ion-label>
+          <ion-label>Age: 7 <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> Class: A5 </ion-label>
           <p>Class Teacher: Mrs. Jackson</p>
           
         </ion-card-content>
