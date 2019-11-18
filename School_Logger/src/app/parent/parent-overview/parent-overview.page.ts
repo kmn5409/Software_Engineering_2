@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
-import * as moment from 'moment'
 
 @Component({
   selector: 'app-parent-overview',

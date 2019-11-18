@@ -11,8 +11,6 @@ export class AuthguardService {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.role;
-    //let currentuser : any = this.auth.currentUser;
-    //console.log("current user : ", currentuser.role);
 
     let authInfo = {
       authenticated: true,
@@ -25,7 +23,7 @@ export class AuthguardService {
     }
 
     if(authInfo.role == expectedRole){
-     // return true;
+     //return true;
     }else  {
       //this.router.navigate(["login"]);
      //return false;
