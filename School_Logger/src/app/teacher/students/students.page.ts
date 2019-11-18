@@ -13,6 +13,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class StudentsPage {
   childrenCollection: AngularFirestoreCollection<any>;
   children: Observable<any[]>;
+  uid: string;
   constructor(private db: AngularFirestore, public af: AngularFireAuth){}
 
   ngOnInit() {
@@ -20,9 +21,12 @@ export class StudentsPage {
     this.children = this.childrenCollection.valueChanges();
     //this.af.auth.subscribe(auth => console.log(auth));
     console.log(this.af.auth);
+    console.log(this.af.auth.userID);
     console.log('User');
     console.log(this.af.auth.currentUser);
     console.log(this.af.auth.currentUser.email);
+    console.log(this.af.auth.currentUser.uid);
+    this.uid = this.af.auth.currentUser.uid;
   }
 
 
