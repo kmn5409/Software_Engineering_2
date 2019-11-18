@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-parent-overview',
   templateUrl: './parent-overview.page.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentOverviewPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    console.log('it workes', id);
   }
 
 
