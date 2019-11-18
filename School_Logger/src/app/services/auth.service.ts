@@ -93,6 +93,7 @@ export class AuthService {
           }else if(userRef.data().role == "parent"){
             this.router.navigate(["/parent"]);
           }
+          localStorage.setItem('role', userRef.data().role);
         })
       })
      
