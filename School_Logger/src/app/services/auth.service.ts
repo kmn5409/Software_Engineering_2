@@ -6,19 +6,22 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 
 interface User {
+  firstname: string,
+  lastname: string,
   email?: string;
   password?: string;
   role?: string;
 }
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user: User = {
-    email: 'jahrel@email.com',
-    password: 'password',
-    role: 'parent'
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    role: ''
   }
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore , private router: Router) { }
@@ -33,34 +36,46 @@ export class AuthService {
     this.userStatusChanges.next(userStatus);
   }
 
-  createAccount(email : string, password : string, role : string) {
+  createAccount(email: string, password: string, role: string, firstname: string, lastname: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(
       email,
       password
     ).then((userResponse) => {
-      let user = {
-        id: userResponse.user.uid,
-        username: userResponse.user.email,
-        role : role
+      let user = {};
+      if(role == 'teacher'){
+          user = { 
+          firstname: firstname,
+          lastname : lastname,
+          id: userResponse.user.uid,
+          username: userResponse.user.email,
+          students: [],
+          role: role
+        }
+
+      }else{
+          user = {
+          id: userResponse.user.uid,
+          username: userResponse.user.email,
+          children: [],
+          role: role
+        }
+
       }
-      this.firestore.collection("users").add(user)
-        .then(user => {
-          user.get().then(x => {
-            console.log(x.data());
-            this.currentUser = x.data();
-            this.setUserStatus(this.currentUser);
-            console.log(role);
-            if (role == 'parent') {
-              this.router.navigate(["/parent"]);
-            }else if(role == 'teacher') {
-              this.router.navigate(["/teacher"]);
-            }
-          })
-        }).catch(err => {
-          console.log(err);
-        })
-    }).catch((err) => {
-      console.log("An error ocurred: ", err);
+      
+      this.firestore.collection("users").doc(userResponse.user.uid).set(user).then(user => {
+        this.currentUser = user;
+        this.setUserStatus(this.currentUser);
+        this.router.navigate(["/login"]);
+        // if (role == 'parent') {
+        //   this.router.navigate(["/parent"]);
+        // } else if (role == 'teacher') {
+        //   this.router.navigate(["/teacher"]);
+        // }
+      }).catch(err => {
+        console.log(err);
+      })
+    }).catch(err => {
+      console.log(err);
     })
   }
 

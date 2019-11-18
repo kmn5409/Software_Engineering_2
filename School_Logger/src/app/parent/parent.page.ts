@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { firestore } from 'firebase/app';
+import { Observable , of} from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+//import * as observable from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-parent',
@@ -6,6 +15,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.page.scss'],
 })
 export class ParentPage{
-  constructor() { }
- 
+  constructor(private afAuth: AngularFireAuth) {  
+  }
+
+  children = new Observable((observer) => {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        const db = firestore()
+        const query = db.collection('users').where('userID', '==', user.uid);
+        query.get().then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            let children = doc.data().children;
+            let test = [];
+            for (var index in children) {
+              let childID = doc.data().children[index];
+              const query = db.collection('children').doc(childID);
+              query.get()
+              .then(doc => {
+                if (!doc.exists) {
+                  console.log('No such document!');
+                } else {
+                  test.push(doc.data());
+                  //console.log([doc.data()])
+                  //observer.next([doc.data()])
+                
+                }
+              })
+              .catch(err => {
+                console.log('Error getting doment', err);
+              });
+            }
+            observer.next(test);
+          });
+        })
+      }
+    })
+
+  })
+  
+
+
+
 }

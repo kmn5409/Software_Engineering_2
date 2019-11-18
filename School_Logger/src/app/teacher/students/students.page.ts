@@ -11,7 +11,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./students.page.scss'],
 })
 export class StudentsPage {
-childrenCollection: AngularFirestoreCollection<any>;
+  childrenCollection: AngularFirestoreCollection<any>;
   children: Observable<any[]>;
   constructor(private db: AngularFirestore, public af: AngularFireAuth){}
 
