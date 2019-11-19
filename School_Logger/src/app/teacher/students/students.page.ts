@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-students',
@@ -14,7 +15,7 @@ export class StudentsPage {
   childrenCollection: AngularFirestoreCollection<any>;
   children: Observable<any[]>;
   uid: string;
-  constructor(private db: AngularFirestore, public af: AngularFireAuth){}
+  constructor(private db: AngularFirestore, public af: AngularFireAuth, private router: Router){}
 
   ngOnInit() {
     this.childrenCollection =  this.db.collection('children');
@@ -26,7 +27,16 @@ export class StudentsPage {
     console.log(this.af.auth.currentUser.email);
     console.log(this.af.auth.currentUser.uid);
     this.uid = this.af.auth.currentUser.uid;
+  } 
+  
+  
+  goToChild(child) {
+    console.log('hey', child.firstName);
+    this.router.navigate(['/teacher/student-overview', child.childID]);
+
   }
+
+
 
 
 }

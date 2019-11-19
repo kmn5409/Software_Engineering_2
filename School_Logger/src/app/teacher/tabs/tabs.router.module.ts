@@ -12,7 +12,7 @@ const routes: Routes = [
           loadChildren: () => import('../students/students.module').then(m => m.StudentsPageModule),
         },
         {
-        path: 'student-overview',
+        path: 'student-overview/:id',
         loadChildren: () => import('../student-overview/student-overview.module').then(m => m.StudentOverviewPageModule),
         },
         {
@@ -20,12 +20,12 @@ const routes: Routes = [
           loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule),
         },
         {
-          path: 'student-alerts',
+          path: 'student-alerts/:id',
           loadChildren: () => import('../student-alerts/student-alerts.module').then(m => m.StudentAlertsPageModule),
 
         },
         {
-          path: 'student-logs',
+          path: 'student-logs/:id',
           loadChildren: () => import ('../student-logs/student-logs.module').then(m => m.StudentLogsPageModule),
         },
         {

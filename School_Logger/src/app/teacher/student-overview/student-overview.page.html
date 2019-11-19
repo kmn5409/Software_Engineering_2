@@ -22,7 +22,7 @@
             <ion-label>Alerts</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button [routerLink]="['/teacher/student-logs']">
+          <ion-tab-button *ngFor="let child of childData | async" (click)="goToLogs(child)">
               <ion-icon name="logs"></ion-icon>
               <ion-label>Logs</ion-label>
             </ion-tab-button>

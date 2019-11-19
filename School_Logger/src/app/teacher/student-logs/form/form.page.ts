@@ -17,17 +17,19 @@ interface Log{
 export class FormPage implements OnInit {
 childrenCollection: AngularFirestoreCollection<any>;
 children: Observable<any[]>;
+data: string;
 
   constructor(private db: AngularFirestore, public af: AngularFireAuth) { }
 
   capture_Data(){
-    //console.log(this.data);
-    //this.childrenCollection =  this.db.collection('logs');
-    //this.childrenCollection.add({logDetails: this.data});
+    console.log(this.data);
+    this.childrenCollection =  this.db.collection('logs');
+    this.childrenCollection.add({logDetails: this.data});
 
   }
     
   ngOnInit() {
+    
   }
 
 }

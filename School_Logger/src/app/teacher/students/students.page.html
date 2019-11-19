@@ -10,8 +10,7 @@
 <ion-content fullscreen>
 <ion-card>
   <ion-list>
-    
-     <ion-item *ngFor="let child of children | async" [routerLink]="['/teacher/student-overview']">  
+     <ion-item *ngFor="let child of children | async" (click)="goToChild(child)">  
      <ion-item *ngFor="let id of child.userID" >  
      <ion-item *ngIf="uid == id" >  
       <ion-avatar slot="start">

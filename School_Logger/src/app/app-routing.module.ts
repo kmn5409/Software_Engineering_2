@@ -10,10 +10,10 @@ const routes: Routes = [
   // tslint:disable-next-line: max-line-length
   {path : '', loadChildren: () => import('./teacher/tabs/tabs.module').then(m => m.TabsPageModule), canActivate: [AuthguardService], data : {role: 'teacher'}},
   { path: 'message', loadChildren: './teacher/message/message.module#MessagePageModule' },
-  { path: 'student-overview', loadChildren: './teacher/student-overview/student-overview.module#StudentOverviewPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'createaccount', loadChildren: './createaccount/createaccount.module#CreateaccountPageModule'},
-  { path: '**', redirectTo: 'home' },  { path: 'form', loadChildren: './teacher/student-logs/form/form.module#FormPageModule' },
+  { path: '**', redirectTo: 'home' },
+  { path: 'form', loadChildren: './teacher/student-logs/form/form.module#FormPageModule' },
 
 
 ];
