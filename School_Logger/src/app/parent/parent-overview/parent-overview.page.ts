@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
@@ -10,13 +10,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./parent-overview.page.scss'],
 })
 export class ParentOverviewPage implements OnInit {
-  id;
   constructor(private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
-
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log('it works', this.id);
-  }
+  id;
 
  childData = new Observable((observer) => {
     this.afAuth.authState.subscribe(user => {
@@ -39,6 +34,11 @@ export class ParentOverviewPage implements OnInit {
       }
     })
   })
+
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log('it works', this.id);
+  }
 
   calculateDob(dob){
     const timeDiff = Math.abs(Date.now() - new Date(dob).getTime());

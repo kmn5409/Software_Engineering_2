@@ -14,10 +14,10 @@ interface User {
 })
 export class LoginPage {
 
-  constructor(private authservice : AuthService) { }
+  constructor(private authservice: AuthService) { }
 
   user: User = {
-    email: 'rahel@email.com',
+    email: 'keanu@email.com',
     password: 'password'
   }
 

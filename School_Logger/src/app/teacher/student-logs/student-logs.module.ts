@@ -12,7 +12,10 @@ const routes: Routes = [
     path: '',
     component: StudentLogsPage,
     children: [
-    ]
+    {
+      path: 'form',
+      loadChildren: () => import('./form/form.module').then(m => m.FormPageModule)
+    }]
   }
 ];
 
