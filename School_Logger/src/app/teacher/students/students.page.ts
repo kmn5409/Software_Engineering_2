@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-students',
@@ -23,6 +24,8 @@ export class StudentsPage {
     this.children = this.childrenCollection.valueChanges();
     console.log(this.children);
   }
+
+
 
 
 }
