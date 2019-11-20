@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import { AngularFirestore , AngularFirestoreCollection,  AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 
 interface User {
-  firstname: string,
-  lastname: string,
+  firstname: string;
+  lastname: string;
   email?: string;
   password?: string;
   role?: string;
@@ -22,14 +22,14 @@ export class AuthService {
     email: '',
     password: '',
     role: ''
-  }
+  };
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore , private router: Router) { }
 
   public currentUser: any;
   public userStatus: string;
   public userStatusChanges: BehaviorSubject<string> = new BehaviorSubject<string>(this.userStatus);
-  
+
 
   setUserStatus(userStatus: any): void {
     this.userStatus = userStatus;
@@ -42,30 +42,30 @@ export class AuthService {
       password
     ).then((userResponse) => {
       let user = {};
-      if(role == 'teacher'){
-          user = { 
-          firstname: firstname,
-          lastname : lastname,
+      if (role == 'teacher') {
+          user = {
+          firstname,
+          lastname,
           id: userResponse.user.uid,
           username: userResponse.user.email,
           students: [],
-          role: role
-        }
+          role
+        };
 
-      }else{
+      } else {
           user = {
           id: userResponse.user.uid,
           username: userResponse.user.email,
           children: [],
-          role: role
-        }
+          role
+        };
 
       }
-      
-      this.firestore.collection("users").doc(userResponse.user.uid).set(user).then(user => {
+
+      this.firestore.collection('users').doc(userResponse.user.uid).set(user).then(user => {
         this.currentUser = user;
         this.setUserStatus(this.currentUser);
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
         // if (role == 'parent') {
         //   this.router.navigate(["/parent"]);
         // } else if (role == 'teacher') {
@@ -73,40 +73,39 @@ export class AuthService {
         // }
       }).catch(err => {
         console.log(err);
-      })
+      });
     }).catch(err => {
       console.log(err);
-    })
+    });
   }
 
   login(email: string, password: string) {
-      
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then((user)=>{
-      this.firestore.collection("users").ref.where("username", "==", user.user.email).onSnapshot(snap =>{
+    .then((user) => {
+      this.firestore.collection('users').ref.where('username', '==', user.user.email).onSnapshot(snap => {
         snap.forEach(userRef => {
-          console.log("userRef", userRef.data());
+          console.log('userRef', userRef.data());
           this.currentUser = userRef.data();
-          this.setUserStatus(this.currentUser)
-          if(userRef.data().role == "teacher") {
-            this.router.navigate(["/teacher"]);
-          }else if(userRef.data().role == "parent"){
-            this.router.navigate(["/parent"]);
+          this.setUserStatus(this.currentUser);
+          if (userRef.data().role == 'teacher') {
+            this.router.navigate(['/teacher']);
+          } else if (userRef.data().role == 'parent') {
+            this.router.navigate(['/parent']);
           }
           localStorage.setItem('role', userRef.data().role);
-        })
-      })
-     
+        });
+      });
+
     }).catch(err => {
       console.log('nope not today', err);
-    })
+    });
 }
 
-signout(){
+signout() {
   return this.afAuth.auth.signOut().then(() => {
-    this.router.navigate(["/home"]);
+    this.router.navigate(['/home']);
   }).catch(function(e) {
-    console.error(e); 
-  })
+    console.error(e);
+  });
 }
 }

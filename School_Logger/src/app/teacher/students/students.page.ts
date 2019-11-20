@@ -22,7 +22,6 @@ export class StudentsPage {
     this.uid = this.af.auth.currentUser.uid;
     this.childrenCollection =  this.db.collection('children', ref => ref.where('userID', 'array-contains', this.uid));
     this.children = this.childrenCollection.valueChanges();
-    console.log(this.children);
   }
 
 

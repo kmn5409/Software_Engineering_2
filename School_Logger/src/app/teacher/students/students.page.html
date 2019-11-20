@@ -11,8 +11,8 @@
 <ion-card>
   <ion-list>
     
-     <ion-item *ngFor="let child of children | async" [routerLink]="['/teacher/student-overview']">  
-      <ion-avatar slot="start">
+     <ion-item *ngFor="let child of children | async" [routerLink]="['/teacher/student-overview', child.childID]">  
+      <ion-avatar slot="start" >
       <img src={{child.imageLink}}>
       </ion-avatar>
         <ion-note>

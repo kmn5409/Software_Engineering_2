@@ -7,12 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
-  <div id="inter_tabs" style="border: 1px solid black">
+<ion-content *ngFor="let child of children | async" >
+
+<div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
         <ion-tab-bar slot="top">
-          <ion-tab-button [routerLink]="['/teacher/student-overview']">
+          <ion-tab-button [routerLink]="['/teacher/student-overview', child.childID]">
             <ion-icon name="overview"></ion-icon>
             <ion-label>Overview</ion-label>
           </ion-tab-button>
@@ -22,23 +22,23 @@
             <ion-label>Alerts</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button *ngFor="let child of childData | async" (click)="goToLogs(child)">
+          <ion-tab-button [routerLink]="['/teacher/student-logs']">
               <ion-icon name="logs"></ion-icon>
               <ion-label>Logs</ion-label>
             </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
-    </div>
+</div>
 
 
 <ion-card id="profileCard">
       <ion-card-header id="profile_header">
-          <div id="profile_img"><img src="https://app.pelorous.com/public/cms/209/432/168/1625/GghRfu_web.jpg?v=2" alt=""></div>
-          <ion-card-title>Cimone Yung</ion-card-title>
+          <div id="profile_img"><img src={{child.imageLink}}></div>
+          <ion-card-title>{{child.firstName}} {{child.lastName}}</ion-card-title>
         </ion-card-header>
         
         <ion-card-content id="profile_content"> 
-          <ion-label>Age: 7 <span class="dot"></span> Grade: 3 <span class="dot"></span> Class: A5 </ion-label>
+          <ion-label>Age: 7 <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> </ion-label>
           <p>Class Teacher: Mrs. Jackson</p>
           
         </ion-card-content>
@@ -59,16 +59,10 @@
               <ion-icon name="person"></ion-icon>
 
               <ion-label>
-                Birthday: 7th July
+                Birthday: {{child.dateOfBirth}}
               </ion-label>
             </ion-item>
         
-            <ion-item>
-              <ion-icon name="person"></ion-icon>
-              <ion-label>
-                Blood Type: A+
-              </ion-label>
-            </ion-item>
           </div>
 
           <!-- FAMILY INFORMATION SECTION -->

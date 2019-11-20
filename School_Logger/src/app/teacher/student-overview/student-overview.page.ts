@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router'
+import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-overview',
@@ -11,42 +14,16 @@ import { Router } from '@angular/router'
   styleUrls: ['./student-overview.page.scss'],
 })
 export class StudentOverviewPage implements OnInit {
-  id;
-  constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth) { }
+  id: string;
+  private sub: any;
+  children: Observable<any[]>;
+  constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log('it works', this.id);
+  this.id = this.route.snapshot.paramMap.get('childID');
+  this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
   }
 
-  childData = new Observable((observer) => {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        const db = firestore();
-        const query = db.collection('children').doc(this.id);
-        query.get().then(doc => {
-            if (!doc.exists) {
-              console.log('No such document!');
-            } else {
-              let x = doc.data();
-              x.age = this.calculateDob(x.dateOfBirth);
-              console.log(x);
-              observer.next([x]);
-            }
-          })
-          .catch(err => {
-            console.log('Error getting doment', err);
-          });
-      }
-    })
-  })
-
-
-  goToLogs(child) {
-    console.log('hey', child.firstName);
-    this.router.navigate(['/teacher/student-logs/', child.childID]);
-
-  }
 
 
   calculateDob(dob){
