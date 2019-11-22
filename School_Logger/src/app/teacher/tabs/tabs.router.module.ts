@@ -20,12 +20,12 @@ const routes: Routes = [
           loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule),
         },
         {
-          path: 'student-alerts/:id',
+          path: 'student-alerts/:childID',
           loadChildren: () => import('../student-alerts/student-alerts.module').then(m => m.StudentAlertsPageModule),
 
         },
         {
-          path: 'student-logs/:id',
+          path: 'student-logs/:childID',
           loadChildren: () => import ('../student-logs/student-logs.module').then(m => m.StudentLogsPageModule),
         },
         {

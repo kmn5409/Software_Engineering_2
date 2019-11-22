@@ -12,17 +12,17 @@
 <div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
         <ion-tab-bar slot="top">
-          <ion-tab-button [routerLink]="['/teacher/student-overview', child.childID]">
+          <ion-tab-button [routerLink]="['/teacher/student-overview', id]">
             <ion-icon name="overview"></ion-icon>
             <ion-label>Overview</ion-label>
           </ion-tab-button>
       
-          <ion-tab-button [routerLink]="['/teacher/student-alerts']">
+          <ion-tab-button [routerLink]="['/teacher/student-alerts', id]">
             <ion-icon name="alerts"></ion-icon>
             <ion-label>Alerts</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button [routerLink]="['/teacher/student-logs']">
+          <ion-tab-button [routerLink]="['/teacher/student-logs', id]">
               <ion-icon name="logs"></ion-icon>
               <ion-label>Logs</ion-label>
             </ion-tab-button>
