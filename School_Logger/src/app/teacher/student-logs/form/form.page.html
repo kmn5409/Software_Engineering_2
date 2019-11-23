@@ -14,7 +14,7 @@
 <form>
 <ion-textarea  [(ngModel)]="data" name="first" placeholder="Please describe incident." required="true"></ion-textarea>
 
-<ion-button (click)="capture_Data()" type="submit" color="secondary" expand="full">Submit</ion-button>  
+<ion-button (click)="capture_Data()" type="submit" color="secondary" expand="full" [routerLink]="['/teacher/student-logs', id]">Submit</ion-button>  
 </form>
 </ion-card-content>
 </ion-card>

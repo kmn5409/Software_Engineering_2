@@ -34,6 +34,7 @@ uid: string;
     console.log(this.uid);
     this.childrenCollection =  this.db.collection('logs');
     this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid});
+    this.router.navigate(['/teacher/student-logs', this.id]);
 }
   ngOnInit() {
   }
