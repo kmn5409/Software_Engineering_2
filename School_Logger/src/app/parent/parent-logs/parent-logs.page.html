@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+    <div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
         <ion-tab-bar slot="top">
           <ion-tab-button href="/parent/overview/{{id}}">
@@ -23,5 +24,12 @@
             </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
+    </div>
+
+
+
+      <ion-card id="profileCard" *ngFor="let log of logData | async">
+        <h1>{{log.logDetails}}</h1>
+      </ion-card>
 
 </ion-content>
