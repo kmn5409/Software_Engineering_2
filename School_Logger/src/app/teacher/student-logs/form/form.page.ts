@@ -22,17 +22,20 @@ childrenCollection: AngularFirestoreCollection<any>;
 children: Observable<any[]>;
 data: string;
 id: string;
+uid: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
+  constructor(private route: ActivatedRoute, private router: Router, private af: AngularFireAuth, private db: AngularFirestore) {
+    this.uid = this.af.auth.currentUser.uid;
+    this.id = this.route.snapshot.paramMap.get('childID');
+     }
 
   capture_Data(){
     console.log(this.data);
+    console.log(this.uid);
     this.childrenCollection =  this.db.collection('logs');
-    this.childrenCollection.add({logDetails: this.data});
-
-  }
+    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid});
+}
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('childID');
   }
 
 }
