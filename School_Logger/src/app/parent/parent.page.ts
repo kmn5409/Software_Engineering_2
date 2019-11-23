@@ -51,9 +51,7 @@ export class ParentPage {
 
 
   goToChild(child) {
-    console.log('hey', child.firstName);
     this.router.navigate(['/parent/overview', child.childID]);
-
   }
 
 

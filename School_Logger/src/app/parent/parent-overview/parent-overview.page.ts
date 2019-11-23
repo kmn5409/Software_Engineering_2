@@ -24,7 +24,6 @@ export class ParentOverviewPage implements OnInit {
             } else {
               let x = doc.data();
               x.age = this.calculateDob(x.dateOfBirth);
-              console.log(x);
               observer.next([x]);
             }
           })
@@ -37,13 +36,11 @@ export class ParentOverviewPage implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log('it works', this.id);
   }
 
   calculateDob(dob){
     const timeDiff = Math.abs(Date.now() - new Date(dob).getTime());
     const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-    console.log(age);
     return age;
   }
 

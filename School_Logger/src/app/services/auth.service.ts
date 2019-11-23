@@ -23,7 +23,7 @@ export class AuthService {
     password: '',
     role: ''
   };
-
+  authenticated: boolean;
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore , private router: Router) { }
 
   public currentUser: any;
@@ -84,15 +84,18 @@ export class AuthService {
     .then((user) => {
       this.firestore.collection('users').ref.where('username', '==', user.user.email).onSnapshot(snap => {
         snap.forEach(userRef => {
-          console.log('userRef', userRef.data());
+          //console.log('userRef', userRef.data());
+          this.authenticated = true;
           this.currentUser = userRef.data();
           this.setUserStatus(this.currentUser);
           if (userRef.data().role == 'teacher') {
             this.router.navigate(['/teacher']);
-          } else if (userRef.data().role == 'parent') {
+          }
+          if (userRef.data().role == 'parent') {
             this.router.navigate(['/parent']);
           }
           localStorage.setItem('role', userRef.data().role);
+          localStorage.setItem('auth', 'true');
         });
       });
 
@@ -103,6 +106,7 @@ export class AuthService {
 
 signout() {
   return this.afAuth.auth.signOut().then(() => {
+    localStorage.setItem('auth', 'false');
     this.router.navigate(['/home']);
   }).catch(function(e) {
     console.error(e);
