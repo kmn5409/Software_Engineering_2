@@ -20,7 +20,8 @@ export class StudentsPage {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.uid = this.af.auth.currentUser.uid;
-    this.childrenCollection =  this.db.collection('children', ref => ref.where('userID', 'array-contains', this.uid));
+    // tslint:disable-next-line: max-line-length
+    this.childrenCollection =  this.db.collection('children', ref => ref.where('userID', 'array-contains', this.uid).orderBy('grade', 'asc'));
     this.children = this.childrenCollection.valueChanges();
   }
 

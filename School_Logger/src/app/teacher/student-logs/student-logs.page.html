@@ -30,18 +30,11 @@
   <ion-card id="logsCard">
   <ion-button id="addButton" color="secondary" expand="full" [routerLink]="['/teacher/form', id]">New Log</ion-button>
     <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let log of logs | async">
         <ion-note>
           <h4>Date</h4>
           <h5>By</h5>
-            <p> Details</p>
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-note>
-          <h4>Date</h4>
-          <h5>By</h5>
-            <p> Details</p>
+          <p> {{log.logDetails}}</p>
         </ion-note>
       </ion-item>
     </ion-list>
