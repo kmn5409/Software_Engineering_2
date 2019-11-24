@@ -28,6 +28,7 @@
   <div id="profileCard">
     <a href="/parent/log/{{log.logID}}" *ngFor="let log of logs | async">
       <ion-card>
+        <h1>{{log.dateago}}</h1>
         <h1>{{log.logDetails}}</h1>
       </ion-card>
     </a>

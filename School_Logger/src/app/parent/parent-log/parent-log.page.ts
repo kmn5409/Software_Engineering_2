@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
-import { Observable } from 'rxjs';
+import { DateconvertService } from '../../services/dateconvert.service'
 
 @Component({
   selector: 'app-parent-log',
@@ -12,7 +11,8 @@ import { Observable } from 'rxjs';
 export class ParentLogPage implements OnInit {
   id;
   logdetails;
-  constructor(private route: ActivatedRoute) {
+  logtime;
+  constructor(private route: ActivatedRoute, private date: DateconvertService) {
    }
 
   ngOnInit() {
@@ -33,6 +33,8 @@ export class ParentLogPage implements OnInit {
       }  
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
+        console.log(doc.data().date);
+        this.logtime = this.date.timeSince(doc.data().date);
       });
     })
     .catch(err => {
@@ -43,4 +45,7 @@ export class ParentLogPage implements OnInit {
     console.log("note added");
 
   }
+
+
+
 }

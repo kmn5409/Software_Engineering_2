@@ -8,6 +8,7 @@
   <div style="margin-top: 80px;">
     
       <ion-card *ngIf="logdetails">
+        {{logtime}}
         <h1>{{logdetails}}</h1>
         <ion-button (click)="addNoteToLog()">Add</ion-button>
       </ion-card>

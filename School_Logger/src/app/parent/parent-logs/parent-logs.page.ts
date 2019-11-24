@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
+import { DateconvertService } from '../../services/dateconvert.service'
+
 
 @Component({
   selector: 'app-parent-logs',
@@ -12,7 +14,7 @@ import { Observable } from 'rxjs';
 export class ParentLogsPage implements OnInit {
   id;
   hasLogs: boolean;
-  constructor(private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
+  constructor(private date: DateconvertService, private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
  
   logs = new Observable((observer) => {
         const db = firestore();
@@ -27,7 +29,9 @@ export class ParentLogsPage implements OnInit {
           let x = [];
           snapshot.forEach(doc => {
             console.log(doc.id, '=>', doc.data());
-            x.push(doc.data());
+            let y =  doc.data();
+            y.dateago = this.date.timeSince(doc.data().date);
+            x.push(y);
            
           });
           this.hasLogs = true;
