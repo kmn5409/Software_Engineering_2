@@ -11,19 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class ParentLogsPage implements OnInit {
   id;
+  hasLogs: boolean;
   constructor(private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
-
-  
-
-  logData = new Observable((observer) => {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
+ 
+  logs = new Observable((observer) => {
         const db = firestore();
         const logref = db.collection('logs');
         const query = logref.where('childID' , '==', this.id).get()
         .then(snapshot => {
           if (snapshot.empty) {
             console.log('No matching documents.');
+            this.hasLogs = false;
             return;
           }  
           let x = [];
@@ -32,18 +30,18 @@ export class ParentLogsPage implements OnInit {
             x.push(doc.data());
            
           });
+          this.hasLogs = true;
           observer.next(x);
           
         })
         .catch(err => {
           console.log('Error getting documents', err);
         });
-      }
-    })
   })
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    
+    this.id = this.route.snapshot.paramMap.get('id');   
   }
+
+  
 
 }
