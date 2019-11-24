@@ -16,10 +16,13 @@ import { Router } from '@angular/router';
 })
 export class StudentLogsPage implements OnInit {
   id: string;
+  logs: Observable<any[]>;
   constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('childID');
+    console.log(this.id);
+    this.logs =  this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges();
   }
 
 }

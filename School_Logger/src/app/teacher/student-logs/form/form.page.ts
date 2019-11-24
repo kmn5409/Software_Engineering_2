@@ -27,13 +27,17 @@ uid: string;
   constructor(private route: ActivatedRoute, private router: Router, private af: AngularFireAuth, private db: AngularFirestore) {
     this.uid = this.af.auth.currentUser.uid;
     this.id = this.route.snapshot.paramMap.get('childID');
+    this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
      }
 
   capture_Data(){
     console.log(this.data);
     console.log(this.uid);
+    var date = new Date();
+    var now = date.getDate() + '/' + date.getMonth() + '/' +  date.getFullYear();
     this.childrenCollection =  this.db.collection('logs');
-    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid});
+    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid, date: now});
+    this.router.navigate(['/teacher/student-logs', this.id]);
 }
   ngOnInit() {
   }

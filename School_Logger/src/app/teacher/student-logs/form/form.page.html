@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header *ngFor="let child of children | async">
   <ion-toolbar color="secondary">
-    <ion-title>Add Log for StudentName</ion-title>
+    <ion-title>New log for {{child.firstName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
 <form>
 <ion-textarea  [(ngModel)]="data" name="first" placeholder="Please describe incident." required="true"></ion-textarea>
 
-<ion-button (click)="capture_Data()" type="submit" color="secondary" expand="full">Submit</ion-button>  
+<ion-button (click)="capture_Data()" type="submit" color="secondary" expand="full" >Submit</ion-button>  
 </form>
 </ion-card-content>
 </ion-card>
