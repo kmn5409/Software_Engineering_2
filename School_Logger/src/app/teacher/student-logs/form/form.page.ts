@@ -27,6 +27,7 @@ uid: string;
   constructor(private route: ActivatedRoute, private router: Router, private af: AngularFireAuth, private db: AngularFirestore) {
     this.uid = this.af.auth.currentUser.uid;
     this.id = this.route.snapshot.paramMap.get('childID');
+    this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
      }
 
   capture_Data(){

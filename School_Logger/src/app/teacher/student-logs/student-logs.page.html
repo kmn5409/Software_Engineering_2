@@ -32,9 +32,9 @@
     <ion-list>
       <ion-item *ngFor="let log of logs | async">
         <ion-note>
-          <h4>Date</h4>
-          <h5>By</h5>
-          <p> {{log.logDetails}}</p>
+          <h4>Date: {{log.date}}</h4>
+          <h4>By</h4>
+          <h4> {{log.logDetails}}</h4>
         </ion-note>
       </ion-item>
     </ion-list>

@@ -22,7 +22,7 @@ export class StudentLogsPage implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('childID');
     console.log(this.id);
-    this.logs =  this.db.collection('logs', ref => ref.where('childID', '==', this.id)).valueChanges();
+    this.logs =  this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges();
   }
 
 }
