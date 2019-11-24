@@ -19,8 +19,7 @@ export class StudentOverviewPage implements OnInit {
   children: Observable<any>;
   child: any;
   age: number;
-  teachers = [];
-  parents = [];
+  users = [];
   constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
@@ -33,22 +32,12 @@ export class StudentOverviewPage implements OnInit {
       const x = this.db.collection('users', ref => ref.where('userID', '==', user)).valueChanges();
       x.subscribe( innerUser => {
         for (const u of innerUser) {
-        const name: string = u.firstName + ' ' + u.lastName;
-        if ( u.role === 'teacher') {
-          this.teachers.push(name);
-        } else {
-          this.parents.push(name);
-      }
-      }
+        this.users.push(u);
     }
-        );
-     }
-  }
-
-    }
-    );
-  }
-
+  }); }
+}
+});
+}
 
 
   calculateDob(dob: string | number | Date) {
