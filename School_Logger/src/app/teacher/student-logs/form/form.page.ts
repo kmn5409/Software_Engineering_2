@@ -32,8 +32,10 @@ uid: string;
   capture_Data(){
     console.log(this.data);
     console.log(this.uid);
+    var date = new Date();
+    var now = date.getDate() + '/' + date.getMonth() + '/' +  date.getFullYear();
     this.childrenCollection =  this.db.collection('logs');
-    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid});
+    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid, date: now});
     this.router.navigate(['/teacher/student-logs', this.id]);
 }
   ngOnInit() {
