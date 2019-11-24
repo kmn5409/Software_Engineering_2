@@ -5,31 +5,36 @@
 </ion-header>
 
 <ion-content>
-    <div id="inter_tabs" style="border: 1px solid black">
+  <div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
-        <ion-tab-bar slot="top">
-          <ion-tab-button href="/parent/overview/{{id}}">
-            <ion-icon name="overview"></ion-icon>
-            <ion-label>Overview</ion-label>
-          </ion-tab-button>
-      
-          <ion-tab-button href="/parent/overview/{{id}}" >
-            <ion-icon name="alerts"></ion-icon>
-            <ion-label>Alerts</ion-label>
-          </ion-tab-button>
+      <ion-tab-bar slot="top">
+        <ion-tab-button href="/parent/overview/{{id}}">
+          <ion-icon name="overview"></ion-icon>
+          <ion-label>Overview</ion-label>
+        </ion-tab-button>
 
-          <ion-tab-button href="/parent/overview/{{id}}">
-              <ion-icon name="logs"></ion-icon>
-              <ion-label>Logs</ion-label>
-            </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-    </div>
+        <ion-tab-button href="/parent/overview/{{id}}">
+          <ion-icon name="alerts"></ion-icon>
+          <ion-label>Alerts</ion-label>
+        </ion-tab-button>
 
-
-
-      <ion-card id="profileCard" *ngFor="let log of logData | async">
+        <ion-tab-button href="/parent/overview/{{id}}">
+          <ion-icon name="logs"></ion-icon>
+          <ion-label>Logs</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+  <div id="profileCard">
+    <a href="/parent/log/{{log.logID}}" *ngFor="let log of logs | async">
+      <ion-card>
+        <h1>{{log.dateago}}</h1>
         <h1>{{log.logDetails}}</h1>
       </ion-card>
+    </a>
 
+    <div id="profileCard" *ngIf="!hasLogs">
+      no logs
+    </div>
+  </div>
 </ion-content>
