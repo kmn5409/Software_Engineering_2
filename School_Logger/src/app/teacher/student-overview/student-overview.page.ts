@@ -17,13 +17,34 @@ export class StudentOverviewPage implements OnInit {
   id: string;
   private sub: any;
   children: Observable<any>;
+  child: any;
+  age: number;
+  teachers = [];
+  parents = [];
   constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
   this.id = this.route.snapshot.paramMap.get('childID');
   this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
-  this.children.subscribe( result => {
-    console.log(result);
+  this.children.subscribe( results => {
+  for ( const result of results) {
+    this.age = this.calculateDob(result.dateOfBirth);
+    for (const user of result.userID) {
+      const x = this.db.collection('users', ref => ref.where('userID', '==', user)).valueChanges();
+      x.subscribe( innerUser => {
+        for (const u of innerUser) {
+        const name: string = u.firstName + ' ' + u.lastName;
+        if ( u.role === 'teacher') {
+          this.teachers.push(name);
+        } else {
+          this.parents.push(name);
+      }
+      }
+    }
+        );
+     }
+  }
+
     }
     );
   }
@@ -31,9 +52,7 @@ export class StudentOverviewPage implements OnInit {
 
 
   calculateDob(dob: string | number | Date) {
-    console.log(dob);
     const timeDiff = Math.abs(Date.now() - new Date(dob).getTime());
-    console.log(' Is this working? ' , timeDiff);
     const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     return age;
   }
