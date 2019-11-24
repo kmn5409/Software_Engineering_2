@@ -16,12 +16,26 @@ import { Router } from '@angular/router';
 })
 export class StudentLogsPage implements OnInit {
   id: string;
-  logs: Observable<any[]>;
+  logs = [];
   constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('childID');
-    this.logs =  this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges();
+    this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges().subscribe(
+      results => {
+        for (const result of results) {
+          let x = result;
+          this.db.collection('users', ref => ref.where('userID', '==', x.userID )).valueChanges().subscribe(
+            innerResult => {
+              x.name = innerResult[0].firstName + ' ' + innerResult[0].lastName;
+            }
+          );
+          this.logs.push(x);
+
+        }
+
+      }
+    );
   }
 
 }
