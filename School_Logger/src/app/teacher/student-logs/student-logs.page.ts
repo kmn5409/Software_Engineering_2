@@ -22,10 +22,16 @@ export class StudentLogsPage implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('childID');
     this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges().subscribe(
-      results => {
-        for (const result of results)
-        {
-        this.logs.push(result);
+      (results: any) => {
+        for (const result of results) {
+          const user = this.db.collection('users', ref => ref.where('userID', '==', result.userID)).valueChanges();
+          user.subscribe( (data: any) => {
+          for (const d of data) {
+          result.user = d.firstName + ' ' + d.lastName;
+          result.date = result.date.toDate();
+          }
+          });
+          this.logs.push(result);
         }
         });
   }
