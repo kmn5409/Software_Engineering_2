@@ -29,6 +29,7 @@ export class StudentLogsPage implements OnInit {
           for (const d of data) {
           result.user = d.firstName + ' ' + d.lastName;
           result.date = result.date.toDate();
+          result.date = result.date.getDate() + '/' + result.date.getMonth() + '/' + result.date.getFullYear();
           }
           });
           this.logs.push(result);
