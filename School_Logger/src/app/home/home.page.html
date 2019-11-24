@@ -1,14 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Home Page</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content style="text-align: center;">
-    <ion-button [routerLink]="['/parent']"  routerDirection="root">Parent</ion-button>
+<ion-content>
+  <div id="container"> 
+    <!--<ion-button [routerLink]="['/parent']"  routerDirection="root">Parent</ion-button>
     <ion-button [routerLink]="['/teacher']" routerDirection="root">Teacher</ion-button>
-    <ion-button [routerLink]="['/login']" routerDirection="root">Login</ion-button>
-    <ion-button (click)="signout()">Log out</ion-button>
-    <ion-button [routerLink]="['/createaccount']" routerDirection="root">Create Account</ion-button>
+  <ion-button (click)="signout()">Log out</ion-button>
+<ion-button color = "highlight" [routerLink]="['/createaccount']" routerDirection="root">Create Account</ion-button>
+-->
+
+  <h1>School Logger</h1>
+
+  <div class="square">
+    
+    <img src="https://cdn.pixabay.com/photo/2017/05/15/23/44/heart-icon-2316451_640.png" alt="heart image">
+  </div>
   
+    <div id="wrapper"> 
+     <ion-button color = "highlight" id="login_btn" [routerLink]="['/login']" routerDirection="root">Login</ion-button>
+    </div>
+  </div>
   </ion-content>

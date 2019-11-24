@@ -1,13 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color = "secondary">
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content style="margin-top: 700px;">
+    <div id="container"> 
+        
+       <div id="header">
+          <img src="https://cdn.pixabay.com/photo/2012/04/28/18/26/hearts-43887_960_720.png" alt="Logo image">
+          <h1>Hello there!</h1>
+          <h2>Welcome</h2>
+          <p>Sign in to get started!</p>
+
+       </div>
+
+      <div id="box">
     <ion-item>
       <ion-label>
-        Email
+        Email:
       </ion-label>
       <ion-input
         type="email"
@@ -15,9 +26,10 @@
         [(ngModel)]="user.email"
       ></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-label>
-        Password
+        Password:
       </ion-label>
       <ion-input
         type="password"
@@ -25,6 +37,10 @@
         [(ngModel)]="user.password"
       ></ion-input>
     </ion-item>
+    <ion-button color = "highlight" (click)="login()">Login</ion-button>
+</div>
 
-  <ion-button (click)="login()">Login</ion-button>
+  
+
+    </div>
 </ion-content>

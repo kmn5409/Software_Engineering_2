@@ -1,0 +1,68 @@
+ion-title{
+    text-align: center;
+};
+
+#container{
+    
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    //background-image: url("https://wallpaperaccess.com/full/885188.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+};
+
+#container ion-item{
+    padding: 10px;
+    width: 95%;
+};
+
+#box{
+    width: 100%;
+    margin-top: 180px;
+    margin-left: 10px;
+    //position: fixed;
+    //bottom: 0;
+    //margin-bottom: 50px;
+};
+
+#box ion-button{
+    margin-top: 40px;
+    height: 50px;
+    width: 93%;
+};
+
+#header{
+    width: 75%;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 30px;
+    
+};
+
+h1{
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+};
+
+h2{
+    color: #535353;
+};
+
+p{
+    font-size: 15px;
+    color: #a5a5a5;
+};
+
+#header img{
+    width: 100px;
+    height: 100px;
+};

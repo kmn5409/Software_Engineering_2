@@ -1,13 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>log</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title>Logs</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="margin-top: 80px;">
+  <div id="container" >
     
       <ion-card *ngIf="logdetails">
+        
         {{logtime}}
         <h1>{{logdetails}}</h1>
         <ion-button (click)="addNoteToLog()">Add</ion-button>

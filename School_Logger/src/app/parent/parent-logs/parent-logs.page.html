@@ -1,6 +1,10 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>Logs</ion-title>
+
+    <ion-buttons slot="primary">
+        <ion-button>Log Out</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -25,13 +29,21 @@
       </ion-tab-bar>
     </ion-tabs>
   </div>
+
   <div id="profileCard">
-    <a href="/parent/log/{{log.logID}}" *ngFor="let log of logs | async">
-      <ion-card>
-        <h1>{{log.dateago}}</h1>
-        <h1>{{log.logDetails}}</h1>
-      </ion-card>
+    <ion-list>
+      <a href="/parent/log/{{log.logID}}" *ngFor="let log of logs | async">
+        <ion-item>
+      <ion-avatar slot="start">
+          <img src="https://cdn.pixabay.com/photo/2012/04/28/18/26/hearts-43887_960_720.png">
+        </ion-avatar>
+        <ion-label>
+          <h2><b>{{log.logDetails}}</b></h2>
+          <p>{{log.dateago}}</p>
+        </ion-label> 
+      </ion-item>
     </a>
+</ion-list>
 
     <div id="profileCard" *ngIf="!hasLogs">
       no logs
