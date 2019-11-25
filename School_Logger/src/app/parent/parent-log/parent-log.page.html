@@ -5,12 +5,15 @@
 </ion-header>
 
 <ion-content>
-  <div style="margin-top: 80px;">
+  <div style="margin-top: 40px;">
     
       <ion-card *ngIf="logdetails">
         {{logtime}}
         <h1>{{logdetails}}</h1>
-        <ion-button (click)="addNoteToLog()">Add</ion-button>
       </ion-card>
+      <ion-card >
+      </ion-card>
+      <ion-button (click)="openPopover()">Add</ion-button>
+      <ion-fab-button color="primary">Add Note</ion-fab-button>
   </div>
 </ion-content>
