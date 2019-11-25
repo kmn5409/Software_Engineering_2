@@ -33,8 +33,8 @@ export class ParentLogPage implements OnInit {
       }  
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
-        console.log(doc.data().date);
-        this.logtime = this.date.timeSince(doc.data().date);
+        let y =  doc.data().date.toDate();
+        this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
       });
     })
     .catch(err => {

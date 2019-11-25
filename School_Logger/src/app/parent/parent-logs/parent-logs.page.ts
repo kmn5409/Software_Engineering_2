@@ -30,7 +30,8 @@ export class ParentLogsPage implements OnInit {
           snapshot.forEach(doc => {
             console.log(doc.id, '=>', doc.data());
             let y =  doc.data();
-            y.dateago = this.date.timeSince(doc.data().date);
+            y.dateago =  doc.data().date.toDate();
+            y.dateago = this.date.timeSince(y.dateago.getMonth() + '/' + y.dateago.getDate()+ '/' + y.dateago.getFullYear());
             x.push(y);
            
           });

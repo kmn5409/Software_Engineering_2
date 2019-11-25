@@ -9,11 +9,8 @@
     <ion-card class="welcome-card" color="secondary">
         <img src="https://familysolutionsusa.com/wp-content/uploads/2018/03/family-solutions-usa_contact-us_header_1920x800.jpg" alt="" />
          <ion-card-header>
-         <ion-card-title>Welcome to the Child Health Monitoring App</ion-card-title>
+         <ion-card-title>Welcome <label *ngIf="firstName">{{firstName}}</label> {{pfirstName}} to the Child Health Monitoring App</ion-card-title>
         </ion-card-header>
-        <!--<ion-card-content>
-          <ion-card-title>Welcome to the Child Health Monitoring App</ion-card-title>
-        </ion-card-content>-->
     </ion-card>
     <div><h1>My Children</h1></div>
 
