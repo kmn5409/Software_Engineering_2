@@ -38,8 +38,10 @@
         </ion-card-header>
         
         <ion-card-content id="profile_content"> 
-          <ion-label>Age: {{child.age}} <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> </ion-label>
-          <p>Class Teacher: Mrs. Jackson</p>
+          <ion-label>Age: {{age}} <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> </ion-label>
+          <div *ngFor="let user of users" >
+          <p *ngIf ="user.role=='teacher'">Teacher: {{user.firstName}} {{user.lastName}}</p>
+          </div>
           
         </ion-card-content>
       </ion-card>
@@ -67,20 +69,15 @@
 
           <!-- FAMILY INFORMATION SECTION -->
           <div class="section">
-            <ion-card-title >Family Information</ion-card-title>
-            <ion-item>
+            <ion-card-title >Parent/Gaurdian Information</ion-card-title>
+            <div *ngFor="let user of users">
+            <ion-item  *ngIf ="user.role=='parent'">
               <ion-icon name="person"></ion-icon>
               <ion-label>
-                Mother: Sheryl Yung
+              {{user.firstName}} {{user.lastName}}
               </ion-label>
             </ion-item>
-          
-            <ion-item>
-              <ion-icon name="person"></ion-icon>
-              <ion-label>
-                Father: Bruce Yung
-              </ion-label>
-            </ion-item>
+          </div>
           </div>
 
         </ion-card-content>

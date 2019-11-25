@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-interface Log{
+interface Log {
     details: string;
 }
 
@@ -30,13 +30,12 @@ uid: string;
     this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
      }
 
-  capture_Data(){
+  capture_Data() {
     console.log(this.data);
     console.log(this.uid);
-    var date = new Date();
-    var now = date.getDate() + '/' + date.getMonth() + '/' +  date.getFullYear();
+    const date = new Date();
     this.childrenCollection =  this.db.collection('logs');
-    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data,childID: this.id, userID: this.uid, date: now});
+    this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data, childID: this.id, userID: this.uid, date});
     this.router.navigate(['/teacher/student-logs', this.id]);
 }
   ngOnInit() {
