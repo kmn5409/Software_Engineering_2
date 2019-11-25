@@ -17,7 +17,6 @@ export class StudentOverviewPage implements OnInit {
   id: string;
   private sub: any;
   children: Observable<any>;
-  child: any;
   age: number;
   users = [];
   constructor(private route: ActivatedRoute, private router: Router, private afAuth: AngularFireAuth, private db: AngularFirestore) { }
@@ -25,10 +24,10 @@ export class StudentOverviewPage implements OnInit {
   ngOnInit() {
   this.id = this.route.snapshot.paramMap.get('childID');
   this.children =  this.db.collection('children', ref => ref.where('childID', '==', this.id)).valueChanges();
-  this.children.subscribe( results => {
+  this.children.subscribe( (results: any) => {
   for ( const result of results) {
-    this.age = this.calculateDob(result.dateOfBirth);
-    for (const user of result.userID) {
+  this.age = this.calculateDob(result.dateOfBirth);
+  for (const user of result.userID) {
       const x = this.db.collection('users', ref => ref.where('userID', '==', user)).valueChanges();
       x.subscribe( innerUser => {
         for (const u of innerUser) {

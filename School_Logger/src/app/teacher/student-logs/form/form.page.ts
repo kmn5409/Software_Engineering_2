@@ -31,8 +31,6 @@ uid: string;
      }
 
   capture_Data() {
-    console.log(this.data);
-    console.log(this.uid);
     const date = new Date();
     this.childrenCollection =  this.db.collection('logs');
     this.childrenCollection.add({logID: this.db.createId(), logDetails: this.data, childID: this.id, userID: this.uid, date});
