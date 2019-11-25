@@ -14,7 +14,8 @@ export class ParentLogPage implements OnInit {
   id;
   logdetails;
   logtime;
-  constructor(private route: ActivatedRoute, private date: DateconvertService, public popoverController: PopoverController, public navParams: NavParams) {
+  docid;
+  constructor(private route: ActivatedRoute, private date: DateconvertService, public popoverController: PopoverController) {
    }
 
   ngOnInit() {
@@ -35,6 +36,8 @@ export class ParentLogPage implements OnInit {
       }  
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
+        this.docid = doc.id;
+        console.log(this.docid);
         let y =  doc.data().date.toDate();
         this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
       });
@@ -49,7 +52,7 @@ export class ParentLogPage implements OnInit {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: {
-        "id": 123
+        "id": this.docid
       },
       event: ev,
       translucent: false,

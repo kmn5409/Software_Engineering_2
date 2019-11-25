@@ -13,13 +13,14 @@ export class PopoverComponent implements OnInit {
   constructor(private route: ActivatedRoute, private navParams: NavParams) { }
  
   ngOnInit() {
-    console.table(this.navParams);
+    console.log(this.navParams.data.id);
   }
 
-  addNoteToLog(note : string, id: string){
-    console.log(id);
-
-    
+  addNoteToLog(note : string){
+    const db = firestore();
+    const docid = this.navParams.data.id;
+    db.collection('logs').doc(docid).set({notes: [{note: note, date:  new Date()}]}, {merge: true});
+    //db.collection('logs').doc(docid).update({notes: });
   }
 
 }
