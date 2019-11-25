@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
-
+import { PopoverController} from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
 
 @Component({
   selector: 'app-parent',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./parent.page.scss'],
 })
 export class ParentPage {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, public popoverController: PopoverController) {
   }
   pfirstName = [];
   children = new Observable((observer) => {
@@ -53,6 +54,18 @@ export class ParentPage {
   goToChild(child) {
     this.router.navigate(['/parent/overview', child.childID]);
   }
+
+
+  async openPopover (ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      componentProps: { page: 'signout' },
+      event: ev,
+      translucent: false,
+    });
+    return await popover.present();
+  }
+
 
 
 

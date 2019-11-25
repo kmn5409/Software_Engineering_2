@@ -3,7 +3,9 @@
     <ion-title>Home</ion-title>
 
     <ion-buttons slot="primary">
-        <ion-button>Log Out</ion-button>
+       <ion-button (click)="openPopover()">
+          <ion-icon  slot="icon-only" name="more"></ion-icon>
+        </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

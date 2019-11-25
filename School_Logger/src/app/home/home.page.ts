@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -17,6 +17,10 @@ export class HomePage {
 
 
   login(){
+    this.router.navigate(['/login']);
+  }
+
+  ngOnInit() {
     if (localStorage.getItem('auth') == 'true') {
       if (localStorage.getItem('role') == 'teacher') {
         this.router.navigate(['/teacher']);
@@ -27,7 +31,7 @@ export class HomePage {
       }
       return;
     }
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 
 
