@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
 export class ParentPage {
   constructor(private afAuth: AngularFireAuth, private router: Router) {
   }
-
+  pfirstName = [];
   children = new Observable((observer) => {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -22,6 +22,9 @@ export class ParentPage {
         query.get().then(function (querySnapshot) {
           querySnapshot.forEach(function (doc) {
             let children = doc.data().children;
+            let pfirstName = doc.data().firstName;
+            //this.pfirstName.push(pfirstName);
+            console.log(doc.data().firstName);
             let test = [];
             for (var index in children) {
               let childID = doc.data().children[index];
@@ -32,9 +35,6 @@ export class ParentPage {
                     console.log('No such document!');
                   } else {
                     test.push(doc.data());
-                    //console.log([doc.data()])
-                    //observer.next([doc.data()])
-
                   }
                 })
                 .catch(err => {

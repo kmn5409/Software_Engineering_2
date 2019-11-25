@@ -21,21 +21,20 @@ export class StudentLogsPage implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('childID');
-  //   this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges().subscribe(
-  //     results => {
-  //       for (const result of results) {
-  //         let x = result.userID;
-  //         this.db.collection('users', ref => ref.where('userID', '==', x.userID )).valueChanges().subscribe(
-  //           innerResult => {
-  //             x.name = innerResult[0].firstName + ' ' + innerResult[0].lastName;
-  //           }
-  //         );
-  //         this.logs.push(x);
-
-  //       }
-
-  //     }
-  //   );
+    this.db.collection('logs', ref => ref.where('childID', '==', this.id).orderBy('date', 'desc')).valueChanges().subscribe(
+      (results: any) => {
+        for (const result of results) {
+          const user = this.db.collection('users', ref => ref.where('userID', '==', result.userID)).valueChanges();
+          user.subscribe( (data: any) => {
+          for (const d of data) {
+          result.user = d.firstName + ' ' + d.lastName;
+          result.date = result.date.toDate();
+          result.date = result.date.getDate() + '/' + result.date.getMonth() + '/' + result.date.getFullYear();
+          }
+          });
+          this.logs.push(result);
+        }
+        });
   }
 
 }

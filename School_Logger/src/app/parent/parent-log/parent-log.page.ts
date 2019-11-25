@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { firestore } from 'firebase/app';
 import { DateconvertService } from '../../services/dateconvert.service'
+import { PopoverController, NavParams } from '@ionic/angular';
+import { PopoverComponent } from '../../popover/popover.component';
 
 @Component({
   selector: 'app-parent-log',
@@ -12,7 +14,8 @@ export class ParentLogPage implements OnInit {
   id;
   logdetails;
   logtime;
-  constructor(private route: ActivatedRoute, private date: DateconvertService) {
+  docid;
+  constructor(private route: ActivatedRoute, private date: DateconvertService, public popoverController: PopoverController) {
    }
 
   ngOnInit() {
@@ -33,17 +36,28 @@ export class ParentLogPage implements OnInit {
       }  
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
-        console.log(doc.data().date);
-        this.logtime = this.date.timeSince(doc.data().date);
+        this.docid = doc.id;
+        console.log(this.docid);
+        let y =  doc.data().date.toDate();
+        this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
       });
     })
     .catch(err => {
       console.log('Error getting documents', err);
     });
   }
-  addNoteToLog() {
-    console.log("note added");
 
+
+  async openPopover (ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      componentProps: {
+        "id": this.docid
+      },
+      event: ev,
+      translucent: false,
+    });
+    return await popover.present();
   }
 
 
