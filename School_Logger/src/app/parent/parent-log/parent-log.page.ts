@@ -15,6 +15,7 @@ export class ParentLogPage implements OnInit {
   logdetails;
   logtime;
   docid;
+  notes;
   constructor(private route: ActivatedRoute, private date: DateconvertService, public popoverController: PopoverController) {
    }
 
@@ -37,14 +38,19 @@ export class ParentLogPage implements OnInit {
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
         this.docid = doc.id;
-        console.log(this.docid);
         let y =  doc.data().date.toDate();
         this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
+        console.log(doc.data().notes)
+        this.notes = doc.data().notes;
       });
     })
     .catch(err => {
       console.log('Error getting documents', err);
     });
+  }
+
+  getNotes(){
+
   }
 
 
