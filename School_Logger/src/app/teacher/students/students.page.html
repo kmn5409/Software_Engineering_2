@@ -3,6 +3,11 @@
       <ion-buttons slot="start">
           <ion-back-button text="back" icon="add"></ion-back-button>
       </ion-buttons>
+      <ion-buttons slot="primary">
+          <ion-button (click)="openPopover()">
+             <ion-icon  slot="icon-only" name="more"></ion-icon>
+           </ion-button>
+       </ion-buttons>
     <ion-title>Students</ion-title>
   </ion-toolbar>
 </ion-header>
