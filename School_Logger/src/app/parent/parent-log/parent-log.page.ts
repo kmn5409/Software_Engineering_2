@@ -55,14 +55,13 @@ export class ParentLogPage implements OnInit {
   }
 
 
-  async openPopover (ev: any) {
+  async openPopover () {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: {
         "id": this.docid,
         page: 'addnote'
       },
-      event: ev,
       translucent: false,
     });
     return await popover.present();

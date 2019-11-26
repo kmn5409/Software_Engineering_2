@@ -33,11 +33,10 @@ export class StudentsPage {
 
 
   
-  async openPopover(ev: any) {
+  async openPopover() {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: { page: 'signout' },
-      event: ev,
       translucent: false,
     });
     return await popover.present();

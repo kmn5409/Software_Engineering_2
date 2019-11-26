@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class StudentLogPage implements OnInit {
   id: string;
-  log = {};
+  log = {image : '', notes : '', date :'', logDetails: '', user : ''};
   constructor(private route: ActivatedRoute, private router: Router, private af: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {

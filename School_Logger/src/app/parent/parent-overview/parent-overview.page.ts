@@ -61,13 +61,12 @@ export class ParentOverviewPage implements OnInit {
     return age;
   }
 
-  async openPopover (ev: any) {
+  async openPopover () {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: {
         page: 'overview'
       },
-      event: ev,
       translucent: false,
     });
     return await popover.present();
