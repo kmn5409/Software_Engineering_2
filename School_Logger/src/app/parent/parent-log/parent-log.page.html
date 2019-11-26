@@ -10,28 +10,19 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
-      <ion-list>
-        <ion-item *ngIf="logdetails">
-          <ion-label><p>{{logdetails}}</p></ion-label>
-          <ion-badge color="primary">{{logtime}}</ion-badge>
-        </ion-item>
-      </ion-list>
-    <!-- <ion-card *ngFor="let note of notes">
-        <p>{{note.note}}</p>
-      </ion-card> -->
+  <div id="container" >
+    
+      <ion-card id="logs"  *ngIf="logdetails">
+          <ion-card-header>
+            <ion-card-title>{{logdetails}}</ion-card-title>
+            <ion-card-subtitle>{{logtime}}</ion-card-subtitle>
+        </ion-card-header>
+        
+      </ion-card >
 
-    <ion-card-header color="secondary">
-      <ion-card-title>Notes</ion-card-title>
-    </ion-card-header>
-    <ion-card-content id="reply_content" >
-      <ion-item *ngFor="let note of notes">
-        <p>{{note.note}}</p>
-        <ion-label>
-          <!-- <ion-badge color="primary">{{note.date}}</ion-badge> -->
-        </ion-label>
-      </ion-item>
-    </ion-card-content>
+      <ion-card id="notes" *ngFor="let not of notes">
+          <ion-card-content>{{not.note}}</ion-card-content>
+      </ion-card>
   </div>
 </ion-content>
 
