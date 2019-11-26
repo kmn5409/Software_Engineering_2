@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-messages',
@@ -26,7 +25,7 @@ export class MessagesPage implements OnInit {
               this.logs.push({
               logID: r.logID,
               date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' +
-              date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() ,
+              date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
               timeStamp: date,
               note: n.note
             });
