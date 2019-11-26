@@ -15,17 +15,17 @@
   <div id="inter_tabs" style="border: 1px solid black">
     <ion-tabs>
         <ion-tab-bar slot="top">
-          <ion-tab-button href="/parent/overview/{{id}}">
+          <ion-tab-button [routerLink]="['/parent/overview', id]">
             <ion-icon name="overview"></ion-icon>
             <ion-label>Overview</ion-label>
           </ion-tab-button>
       
-          <ion-tab-button href="/parent/alerts/{{id}}" >
+          <ion-tab-button [routerLink]="['/parent/alerts', id]" >
             <ion-icon name="alerts"></ion-icon>
             <ion-label>Alerts</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button href="/parent/logs/{{id}}">
+          <ion-tab-button [routerLink]="['/parent/logs', id]">
               <ion-icon name="logs"></ion-icon>
               <ion-label>Logs</ion-label>
             </ion-tab-button>

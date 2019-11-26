@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ParentOverviewPage implements OnInit {
   constructor(private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
-  id;
+  id: string;
 
  childData = new Observable((observer) => {
     this.afAuth.authState.subscribe(user => {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { PopoverController} from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 
@@ -18,17 +18,17 @@ export class ParentPage {
   children = new Observable((observer) => {
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        const db = firestore()
+        const db = firestore();
         const query = db.collection('users').where('userID', '==', user.uid);
-        query.get().then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            let children = doc.data().children;
-            let pfirstName = doc.data().firstName;
-            //this.pfirstName.push(pfirstName);
+        query.get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            const children = doc.data().children;
+            const pfirstName = doc.data().firstName;
+            // this.pfirstName.push(pfirstName);
             console.log(doc.data().firstName);
-            let test = [];
-            for (var index in children) {
-              let childID = doc.data().children[index];
+            const test = [];
+            for (const index in children) {
+              const childID = doc.data().children[index];
               const query = db.collection('children').doc(childID);
               query.get()
                 .then(doc => {
@@ -44,11 +44,11 @@ export class ParentPage {
             }
             observer.next(test);
           });
-        })
+        });
       }
-    })
+    });
 
-  })
+  });
 
 
   goToChild(child) {
@@ -56,7 +56,7 @@ export class ParentPage {
   }
 
 
-  async openPopover (ev: any) {
+  async openPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: { page: 'signout' },

@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -20,6 +20,9 @@ export class StudentsPage {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.uid = this.af.auth.currentUser.uid;
+    if (this.uid){
+    console.log(this.uid);
+    }
     // tslint:disable-next-line: max-line-length
     this.childrenCollection =  this.db.collection('children', ref => ref.where('userID', 'array-contains', this.uid).orderBy('grade', 'asc'));
     this.children = this.childrenCollection.valueChanges();
