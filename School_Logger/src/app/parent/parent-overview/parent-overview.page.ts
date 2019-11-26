@@ -22,9 +22,23 @@ export class ParentOverviewPage implements OnInit {
             if (!doc.exists) {
               console.log('No such document!');
             } else {
-              let x = doc.data();
+              const x = doc.data();
               x.age = this.calculateDob(x.dateOfBirth);
               observer.next([x]);
+              x.users = [];
+              for (const user of x.userID) {
+                db.collection('users').doc(user).get().then(
+                  result => {
+                    const r = result.data();
+                    const person = {
+                      name: r.firstName + ' ' + r.lastName,
+                      role: r.role
+                    };
+                    x.users.push(person);
+
+                  }
+                );
+              }
             }
           })
           .catch(err => {

@@ -33,8 +33,8 @@
       </ion-tabs>
       </div>
      
-
-<ion-card id="profileCard" *ngFor="let child of childData | async">
+<div *ngFor="let child of childData | async">
+<ion-card id="profileCard">
       <ion-card-header id="profile_header">
           <div id="profile_img"><img src="{{child.imageLink}}" alt=""></div>
           <ion-card-title>{{child.firstName}}  {{child.lastName}}</ion-card-title>
@@ -42,7 +42,9 @@
         
         <ion-card-content id="profile_content"> 
           <ion-label  >Age: {{child.age}} <span class="dot"></span> Grade: {{child.grade}} <span class="dot"></span> Class: A5 </ion-label>
-          <p>Class Teacher: Mrs. Jackson</p>
+           <div *ngFor="let user of child.users" >
+          <p *ngIf ="user.role=='teacher'">Teacher: {{user.name}}</p>
+          </div>
           
         </ion-card-content>
       </ion-card>
@@ -76,20 +78,15 @@
 
           <!-- FAMILY INFORMATION SECTION -->
           <div class="section">
-            <ion-card-title >Family Information</ion-card-title>
-            <ion-item>
+            <ion-card-title >Parent/Gaurdian Information</ion-card-title>
+            <div *ngFor="let user of child.users">
+            <ion-item  *ngIf ="user.role=='parent'">
               <ion-icon name="person"></ion-icon>
               <ion-label>
-                Mother: Sheryl Yung
+              {{user.name}}
               </ion-label>
             </ion-item>
-          
-            <ion-item>
-              <ion-icon name="person"></ion-icon>
-              <ion-label>
-                Father: Bruce Yung
-              </ion-label>
-            </ion-item>
+          </div>
           </div>
 
         </ion-card-content>
@@ -102,28 +99,20 @@
       </ion-card-header>
 
       <ion-card-content>
-        <!-- ALLEGIES SECTION -->
-        <div class="section">
-            <ion-card-title >Allergies</ion-card-title>
-            <ion-item>
-              <ion-icon name="medkit"></ion-icon>
-              <ion-label>
-                Allergic to sunlight
-              </ion-label>
-            </ion-item>
-        </div>
+
 
         <div class="section">
           <ion-card-title >Conditions</ion-card-title>
-          <ion-item>
+          <ion-item *ngFor="let condition of child.condition">
               <ion-icon name="medkit"></ion-icon>
             <ion-label>
-              Anemic
+               {{condition}}
             </ion-label>
           </ion-item>
         </div>
       </ion-card-content>
     </ion-card>
+</div>
 
       
 </ion-content>
