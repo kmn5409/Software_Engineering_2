@@ -24,7 +24,7 @@ export class StudentLogsPage implements OnInit {
           user.subscribe( (data: any) => {
           for (const d of data) {
           result.user = d.firstName + ' ' + d.lastName;
-          result.image = ' ';
+          result.image = 'https://secure.i.telegraph.co.uk/multimedia/archive/03127/terry_crews_3127762b.jpg';
           }
           result.date = result.date.toDate();
           result.date = result.date.getDate() + '/' + result.date.getMonth() + '/' + result.date.getFullYear();
