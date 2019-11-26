@@ -27,18 +27,21 @@
       </ion-tabs>
 </div>
 
-  <ion-card id="logsCard">
-  <ion-button id="addButton" color="secondary" expand="full" [routerLink]="['/teacher/form', id]">New Log</ion-button>
-    <ion-list>
-      <ion-item *ngFor="let log of logs">
-        <ion-note>
-          <p><b>Date:</b> {{log.date}}</p>
-          <p><b>By:</b> {{log.user}}</p>
-          <p><b>Description:</b></p>
-          <p> {{log.logDetails}}</p>
-        </ion-note>
+  <div id="profileCard">
+    <ion-list *ngFor="let log of logs">
+      <a>
+        <ion-item>
+      <ion-avatar slot="start">
+          <img src="https://secure.i.telegraph.co.uk/multimedia/archive/03127/terry_crews_3127762b.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h2><b>{{log.logDetails}}</b></h2>
+          <p>{{log.date}}</p>
+           <p>{{log.user}}</p>
+        </ion-label> 
       </ion-item>
-    </ion-list>
-  </ion-card>
+    </a>
+</ion-list>
+</div>
 
 </ion-content>
