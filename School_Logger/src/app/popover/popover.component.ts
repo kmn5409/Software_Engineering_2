@@ -17,9 +17,6 @@ export class PopoverComponent implements OnInit {
   page;
   ngOnInit() {
     this.page = this.navParams.data.page;
-    console.log(this.page);
-
-
   }
 
   addNoteToLog(note: string) {
@@ -36,7 +33,7 @@ export class PopoverComponent implements OnInit {
   }
 
   addhealthconditions(){
-    
+
     this.popoverController.dismiss();
   }
 

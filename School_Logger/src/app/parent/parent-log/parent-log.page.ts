@@ -42,7 +42,6 @@ export class ParentLogPage implements OnInit {
         let y =  doc.data().date.toDate();
         this.childid = doc.data().childID;
         this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
-        console.log(doc.data().notes)
         this.notes = doc.data().notes;
       });
     })

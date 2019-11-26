@@ -1,29 +1,42 @@
 <ion-header>
   <ion-toolbar color="secondary">
-      <ion-buttons slot="start">
-          <ion-button [routerLink]="['/parent/logs', childid]"><ion-icon name="arrow-back"></ion-icon></ion-button>
-        </ion-buttons>
-    <ion-title>Notes</ion-title>
-
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/parent/logs', childid]"
+        ><ion-icon name="arrow-back"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <ion-title>Log Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div id="container" >
-    
-      <ion-card *ngIf="logdetails">
-        
-        {{logtime}}
-        <h1>{{logdetails}}</h1>
-      </ion-card>
-      <ion-card *ngFor="let not of notes">
-        <p>{{not.note}}</p>
-      </ion-card>
+  <div id="container">
+      <ion-list>
+        <ion-item *ngIf="logdetails">
+          <ion-label><p>{{logdetails}}</p></ion-label>
+          <ion-badge color="primary">{{logtime}}</ion-badge>
+        </ion-item>
+      </ion-list>
+    <!-- <ion-card *ngFor="let note of notes">
+        <p>{{note.note}}</p>
+      </ion-card> -->
+
+    <ion-card-header color="secondary">
+      <ion-card-title>Notes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content id="reply_content" >
+      <ion-item *ngFor="let note of notes">
+        <p>{{note.note}}</p>
+        <ion-label>
+          <!-- <ion-badge color="primary">{{note.date}}</ion-badge> -->
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
   </div>
 </ion-content>
 
 <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button (click)="openPopover()" color="secondary">
-      <ion-icon name="add"></ion-icon>
-</ion-fab-button>
+  <ion-fab-button (click)="openPopover()" color="secondary">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
 </ion-fab>
