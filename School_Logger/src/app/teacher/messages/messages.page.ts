@@ -22,19 +22,22 @@ export class MessagesPage implements OnInit {
           for (const r of res) {
           if (r.hasOwnProperty('notes')) {
             for (const n of r.notes) {
-              let date = n.date.toDate();
-              date = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+              const date = n.date.toDate();
               this.logs.push({
               logID: r.logID,
-              date,
+              date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + ' ' +
+              date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() ,
+              timeStamp: date,
               note: n.note
-
             });
           }}}
           });
       }
       }
     );
-    console.log(this.logs);
+    this.logs.sort(( a: any , b: any) => {
+        return -(a.timeStamp.getTime() - b.timeStamp.getTime());
+    });
+
   }
 }
