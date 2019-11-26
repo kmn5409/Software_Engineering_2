@@ -15,3 +15,15 @@
   style="width: -webkit-fill-available;"
   >Sign Out</ion-button
 >
+
+<div *ngIf="page == 'overview'">
+    <ion-textarea
+      #note
+      rows="6"
+      cols="20"
+      placeholder="Enter new health condition..."
+    ></ion-textarea>
+    <ion-button (click)="addhealthconditions()" style="width: -webkit-fill-available;"
+      >Submit</ion-button
+    >
+  </div>

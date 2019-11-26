@@ -16,6 +16,7 @@ export class ParentLogPage implements OnInit {
   logtime;
   docid;
   notes;
+  childid;
   constructor(private route: ActivatedRoute, private date: DateconvertService, public popoverController: PopoverController) {
    }
 
@@ -39,6 +40,7 @@ export class ParentLogPage implements OnInit {
         this.logdetails = doc.data().logDetails;
         this.docid = doc.id;
         let y =  doc.data().date.toDate();
+        this.childid = doc.data().childID;
         this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
         console.log(doc.data().notes)
         this.notes = doc.data().notes;

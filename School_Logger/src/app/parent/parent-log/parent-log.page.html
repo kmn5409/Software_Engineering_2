@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-title>Logs</ion-title>
+      <ion-buttons slot="start">
+          <ion-button [routerLink]="['/parent/logs', childid]"><ion-icon name="arrow-back"></ion-icon></ion-button>
+        </ion-buttons>
+    <ion-title>Notes</ion-title>
 
   </ion-toolbar>
 </ion-header>
@@ -16,8 +19,11 @@
       <ion-card *ngFor="let not of notes">
         <p>{{not.note}}</p>
       </ion-card>
-      <ion-button (click)="openPopover()">Add</ion-button>
-      <!-- <ion-fab-button color="primary">Add Note</ion-fab-button> -->
-
   </div>
 </ion-content>
+
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="openPopover()" color="secondary">
+      <ion-icon name="add"></ion-icon>
+</ion-fab-button>
+</ion-fab>

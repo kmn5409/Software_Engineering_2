@@ -1,8 +1,7 @@
 <ion-header>
   <ion-toolbar color="secondary">
      <ion-buttons slot="start">
-        
-      <ion-button routerLink="/parent"><ion-icon name="arrow-back"></ion-icon> Back</ion-button>
+      <ion-button routerLink="/parent"><ion-icon name="arrow-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>Overview</ion-title>
   </ion-toolbar>
@@ -109,4 +108,9 @@
 
       
 </ion-content>
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="openPopover()" color="secondary">
+      <ion-icon name="add"></ion-icon>
+</ion-fab-button>
+  </ion-fab>
 

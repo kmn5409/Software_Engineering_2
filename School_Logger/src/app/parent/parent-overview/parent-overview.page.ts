@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
+import { PopoverController, NavParams } from '@ionic/angular';
+import { PopoverComponent } from '../../popover/popover.component';
+
 
 @Component({
   selector: 'app-parent-overview',
@@ -10,7 +13,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./parent-overview.page.scss'],
 })
 export class ParentOverviewPage implements OnInit {
-  constructor(private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
+  constructor(public popoverController: PopoverController , private route: ActivatedRoute, private afAuth: AngularFireAuth) { }
   id: string;
 
  childData = new Observable((observer) => {
@@ -56,6 +59,18 @@ export class ParentOverviewPage implements OnInit {
     const timeDiff = Math.abs(Date.now() - new Date(dob).getTime());
     const age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
     return age;
+  }
+
+  async openPopover (ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      componentProps: {
+        page: 'overview'
+      },
+      event: ev,
+      translucent: false,
+    });
+    return await popover.present();
   }
 
 }

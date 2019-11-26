@@ -35,4 +35,9 @@ export class PopoverComponent implements OnInit {
     this.popoverController.dismiss();
   }
 
+  addhealthconditions(){
+    
+    this.popoverController.dismiss();
+  }
+
 }
