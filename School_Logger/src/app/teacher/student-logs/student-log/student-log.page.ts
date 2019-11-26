@@ -15,10 +15,31 @@ import { Router } from '@angular/router';
 })
 export class StudentLogPage implements OnInit {
   id: string;
+  log = {};
   constructor(private route: ActivatedRoute, private router: Router, private af: AngularFireAuth, private db: AngularFirestore) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('logID');
+
+    this.db.collection('logs', ref => ref.where('logID', '==', this.id)).valueChanges().subscribe(
+      (results: any) => {
+        for (const result of results) {
+          const user = this.db.collection('users', ref => ref.where('userID', '==', result.userID)).valueChanges();
+          user.subscribe( (data: any) => {
+          for (const d of data) {
+          result.user = d.firstName + ' ' + d.lastName;
+          result.image = ' ';
+          }
+          result.date = result.date.toDate();
+          result.date = result.date.getDate() + '/' + result.date.getMonth() + '/' + result.date.getFullYear();
+          for (const note of result.notes) {
+            note.date = note.date.toDate();
+            note.date = note.date.getDate() + '/' + note.date.getMonth() + '/' + note.date.getFullYear();
+          }
+          this. log = result;
+          });
+        }
+        });
   }
 
 }

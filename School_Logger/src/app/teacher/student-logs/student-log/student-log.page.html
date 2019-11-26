@@ -1,9 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>student-log</ion-title>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button text="back" icon="add"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Log Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 
+<div *ngIf="log">
+<ion-card>
+       <ion-item>
+            <ion-avatar slot="start">
+                <img src="https://secure.i.telegraph.co.uk/multimedia/archive/03127/terry_crews_3127762b.jpg">
+            </ion-avatar>
+              <ion-label>
+                <h3>Sender: {{log.user}}</h3>
+                <h3>Date: {{log.date}}</h3>
+              </ion-label>
+      </ion-item>
+        <ion-card-content>   
+            <ion-note>
+                <p>{{log.logDetails}}</p>
+            </ion-note>
+        </ion-card-content>
+</ion-card>
+<ion-label>Comments</ion-label>
+<ion-card *ngFor="let note of log.notes">
+  <ion-item>
+      <ion-label>
+          <h3>Date: {{note.date}}</h3>
+      </ion-label>
+  </ion-item>
+  <ion-card-content>   
+       <ion-note>
+                <p>{{note.note}}</p>
+        </ion-note>
+  </ion-card-content>
+</ion-card>
+</div>
 </ion-content>
+
