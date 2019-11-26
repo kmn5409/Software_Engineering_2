@@ -27,10 +27,12 @@
       </ion-tabs>
 </div>
 
+  <ion-button id="logsCard" [routerLink]="['/teacher/form', id]" expand="full" color = "highlight" >New Log</ion-button>
+
   <div id="profileCard">
     <ion-list *ngFor="let log of logs">
       <a>
-        <ion-item>
+        <ion-item [routerLink]="['/teacher/student-log', log.logID]" >
       <ion-avatar slot="start">
           <img src="https://secure.i.telegraph.co.uk/multimedia/archive/03127/terry_crews_3127762b.jpg">
         </ion-avatar>

@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'createaccount', loadChildren: './createaccount/createaccount.module#CreateaccountPageModule'},
   { path: '**', redirectTo: 'home' },
-  { path: 'form', loadChildren: './teacher/student-logs/form/form.module#FormPageModule' },
+  { path: 'form', loadChildren: './teacher/student-logs/form/form.module#FormPageModule' },  { path: 'student-log', loadChildren: './teacher/student-logs/student-log/student-log.module#StudentLogPageModule' },
+
 
 
 ];

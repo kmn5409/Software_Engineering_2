@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { firestore } from 'firebase/app';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { AngularFirestore} from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 
 
