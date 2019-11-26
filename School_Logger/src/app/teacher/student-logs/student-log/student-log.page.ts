@@ -32,9 +32,11 @@ export class StudentLogPage implements OnInit {
           }
           result.date = result.date.toDate();
           result.date = result.date.getDate() + '/' + result.date.getMonth() + '/' + result.date.getFullYear();
+          if (result.notes) {
           for (const note of result.notes) {
             note.date = note.date.toDate();
             note.date = note.date.getDate() + '/' + note.date.getMonth() + '/' + note.date.getFullYear();
+          }
           }
           this. log = result;
           });

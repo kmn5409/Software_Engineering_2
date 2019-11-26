@@ -20,7 +20,7 @@ export class StudentsPage {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.uid = this.af.auth.currentUser.uid;
-    if (this.uid){
+    if (this.uid) {
     console.log(this.uid);
     }
     // tslint:disable-next-line: max-line-length

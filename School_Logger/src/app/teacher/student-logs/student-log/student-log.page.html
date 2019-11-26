@@ -10,7 +10,7 @@
 <ion-content fullscreen>
 
 <div *ngIf="log">
-<ion-card>
+<ion-card id="log_card">
        <ion-item>
             <ion-avatar slot="start">
                 <img src={{log.image}}>
@@ -26,14 +26,20 @@
             </ion-note>
         </ion-card-content>
 </ion-card>
-<ion-label>Comments</ion-label>
-<ion-card *ngFor="let note of log.notes">
+<ion-card id="reply_card" *ngIf="log.notes">
+<ion-card-header color="secondary">
+  <ion-card-title>Parent Note</ion-card-title>
+</ion-card-header>
+<ion-card-content id="reply_content" *ngFor="let note of log.notes">
   <ion-item>
+  <ion-avatar slot="start">
+                <img src="https://cdn.pixabay.com/photo/2012/04/28/18/26/hearts-43887_960_720.png">
+            </ion-avatar>
       <ion-label>
+          <h3>Sender:</h3>
           <h3>Date: {{note.date}}</h3>
       </ion-label>
-  </ion-item>
-  <ion-card-content>   
+  </ion-item>  
        <ion-note>
                 <p>{{note.note}}</p>
         </ion-note>

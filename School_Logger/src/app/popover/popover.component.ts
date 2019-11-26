@@ -12,24 +12,25 @@ import { PopoverController } from '@ionic/angular';
 })
 export class PopoverComponent implements OnInit {
 
-  constructor(public popoverController: PopoverController, private route: ActivatedRoute, private navParams: NavParams, private auth: AuthService) { }
+  constructor(public popoverController: PopoverController, private route: ActivatedRoute,
+              private navParams: NavParams, private auth: AuthService) { }
   page;
   ngOnInit() {
     this.page = this.navParams.data.page;
     console.log(this.page);
 
-    
+
   }
 
-  addNoteToLog(note : string){
+  addNoteToLog(note: string) {
     const db = firestore();
     const docid = this.navParams.data.id;
-    db.collection('logs').doc(docid).set({notes: [{note: note, date:  new Date()}]}, {merge: true});
-    //db.collection('logs').doc(docid).update({notes: });
+    db.collection('logs').doc(docid).set({notes: [{note, date:  new Date()}]}, {merge: true});
+    // db.collection('logs').doc(docid).update({notes: });
     this.popoverController.dismiss();
   }
 
-  signout(){
+  signout() {
     this.auth.signout();
     this.popoverController.dismiss();
   }

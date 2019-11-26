@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -6,10 +10,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
-
-  constructor() { }
-
+  uid: string;
+  constructor(private route: ActivatedRoute, private db: AngularFirestore, public af: AngularFireAuth) { }
+  logs = [];
   ngOnInit() {
-  }
+    this.uid = this.af.auth.currentUser.uid;
+    const childrenCollection =  this.db.collection('children', ref => ref.where('userID', 'array-contains', this.uid)).valueChanges();
+    childrenCollection.subscribe( (results: any) => {
+      for (const result of results) {
+        const log = this.db.collection('logs', ref => ref.where('childID', '==', result.childID)).valueChanges().subscribe( (res: any) => {
+          for (const r of res) {
+          if (r.hasOwnProperty('notes')) {
+            for (const n of r.notes) {
+              let date = n.date.toDate();
+              date = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+              this.logs.push({
+              logID: r.logID,
+              date,
+              note: n.note
 
+            });
+          }}}
+          });
+      }
+      }
+    );
+    console.log(this.logs);
+  }
 }

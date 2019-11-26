@@ -9,19 +9,19 @@
 
 <ion-content fullscreen>
 <ion-card>
+<div *ngFor="let log of logs">
        <ion-list-header>
-                Day
+                {{log.date}}
         </ion-list-header> 
-    <ion-list>
-        <ion-item  [routerLink]="['/teacher/message']">
+        <ion-item  [routerLink]="['/teacher/student-log', log.logID]">
             <ion-icon slot="start" name="mail">
             </ion-icon>
             <ion-note>
-                <h6>Message Title</h6>
-                <p>Details Details Details Details Details Detais...</p>
+                <h6>Re Log {{log.logID}}</h6>
+                <p>{{log.note}}</p>
             </ion-note>
         </ion-item>     
-    </ion-list>
+</div>
 </ion-card>
 </ion-content>
 
