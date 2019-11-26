@@ -1,5 +1,8 @@
 <ion-header *ngFor="let child of children | async">
   <ion-toolbar color="secondary">
+  <ion-buttons slot="start">
+      <ion-button [routerLink]="['/teacher/student-logs', id]" ><ion-icon name="arrow-back"></ion-icon> Back</ion-button>
+    </ion-buttons>
     <ion-title>New log for {{child.firstName}}</ion-title>
   </ion-toolbar>
 </ion-header>
