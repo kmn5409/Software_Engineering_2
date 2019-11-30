@@ -22,8 +22,7 @@ export class PopoverComponent implements OnInit {
   addNoteToLog(note: string) {
     const db = firestore();
     const docid = this.navParams.data.id;
-    db.collection('logs').doc(docid).set({notes: [{note, date:  new Date()}]}, {merge: true});
-    // db.collection('logs').doc(docid).update({notes: });
+    db.collection('logs').doc(docid).set({notes : firestore.FieldValue.arrayUnion({note, date:  new Date()})}, {merge: true} );
     this.popoverController.dismiss();
   }
 
@@ -32,8 +31,10 @@ export class PopoverComponent implements OnInit {
     this.popoverController.dismiss();
   }
 
-  addhealthconditions(){
-
+  addhealthconditions(conditon : string){
+    const db = firestore();
+    const docid = this.navParams.data.id;
+    db.collection('children').doc(docid).set({condition : firestore.FieldValue.arrayUnion(conditon)}, {merge: true} );
     this.popoverController.dismiss();
   }
 

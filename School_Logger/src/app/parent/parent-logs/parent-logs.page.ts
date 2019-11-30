@@ -31,7 +31,8 @@ export class ParentLogsPage implements OnInit {
             console.log(doc.id, '=>', doc.data());
             const y =  doc.data();
             y.dateago =  doc.data().date.toDate();
-            y.dateago = this.date.timeSince(y.dateago.getMonth() + '/' + y.dateago.getDate() + '/' + y.dateago.getFullYear());
+            console.log("this",doc.data().date.toDate());
+            y.dateago = this.date.timeSince(doc.data().date.toDate());
             x.push(y);
 
           });

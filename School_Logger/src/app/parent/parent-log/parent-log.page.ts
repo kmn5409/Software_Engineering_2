@@ -39,9 +39,8 @@ export class ParentLogPage implements OnInit {
       snapshot.forEach(doc => {
         this.logdetails = doc.data().logDetails;
         this.docid = doc.id;
-        let y =  doc.data().date.toDate();
         this.childid = doc.data().childID;
-        this.logtime = this.date.timeSince(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
+        this.logtime = this.date.timeSince(doc.data().date.toDate());
         this.notes = doc.data().notes;
       });
     })

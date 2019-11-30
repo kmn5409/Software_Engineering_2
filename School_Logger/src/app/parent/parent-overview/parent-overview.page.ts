@@ -65,6 +65,7 @@ export class ParentOverviewPage implements OnInit {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: {
+        "id": this.id,
         page: 'overview'
       },
       translucent: false,

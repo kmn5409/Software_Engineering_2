@@ -8,32 +8,50 @@ export class DateconvertService {
   constructor() { }
 
 
-  timeSince(dob) {
-    dob = Date.now() -  new Date(dob).getTime();
-    var date = new Date(dob);
-    var seconds = date.getTime() / 1000; 
-  
-    var interval = Math.floor(seconds / 31536000);
-  
-    if (interval > 1) {
-      return interval + " years ago";
+  timeSince(prev) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    console.log(prev);
+    console.log( new Date().getTime());
+    console.log( new Date());
+    let y = new Date();
+    console.log(y.getMonth() + '/' + y.getDate()+ '/' + y.getFullYear());
+
+    var elapsed = new Date().getTime() - new Date(prev).getTime();
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';   
     }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-      return interval + " months ago";
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
     }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-      return interval + " days ago";
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
     }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-      return interval + " hours ago";
+
+    else if (elapsed < msPerMonth) {
+         return  Math.round(elapsed/msPerDay) + ' days ago';   
     }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-      return interval + " minutes ago";
+
+    else if (elapsed < msPerYear) {
+         return  Math.round(elapsed/msPerMonth) + ' months ago';   
     }
-    return Math.floor(seconds) + " seconds ago";
+
+    else {
+         return  Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+
   }
+
 }
+
+
+
+

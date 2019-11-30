@@ -18,12 +18,12 @@
 
 <div *ngIf="page == 'overview'">
     <ion-textarea
-      #note
+      #condition
       rows="6"
       cols="20"
       placeholder="Enter new health condition..."
     ></ion-textarea>
-    <ion-button (click)="addhealthconditions()" style="width: -webkit-fill-available;"
+    <ion-button (click)="addhealthconditions(condition.value)" style="width: -webkit-fill-available;"
       >Submit</ion-button
     >
   </div>
