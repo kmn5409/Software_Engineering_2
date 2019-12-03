@@ -25,7 +25,6 @@ export class ParentPage {
             const children = doc.data().children;
             const pfirstName = doc.data().firstName;
             // this.pfirstName.push(pfirstName);
-            console.log(doc.data().firstName);
             const test = [];
             for (const index in children) {
               const childID = doc.data().children[index];

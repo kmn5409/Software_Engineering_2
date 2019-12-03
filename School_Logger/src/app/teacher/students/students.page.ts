@@ -18,7 +18,7 @@ export class StudentsPage {
   childrenCollection: AngularFirestoreCollection<any>;
   children: Observable<any[]>;
   uid: string;
-  constructor( public popoverController: PopoverController, private db: AngularFirestore, public af: AngularFireAuth) {}
+  constructor( public popoverController: PopoverController, private db: AngularFirestore, private af: AngularFireAuth) {}
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
